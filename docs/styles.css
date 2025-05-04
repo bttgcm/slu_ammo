@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
 .progress-row {
     display: flex;
     align-items: left;
@@ -44,4 +46,35 @@ h1, h2, h3 {
 h4 {
   color: #03865a;
   font-weight: bold;
+}
+
+h5 {
+  color: #000000;
+  font-size: 24px;
+  font-weight: bold;
+  font:Arial;
+}
+
+.highlight {
+  background-color: #03865a;
+  padding: 0.1em 0.2em; /* Optional: adds a little space around the text */
+  border-radius: 0.2em;  /* Optional: rounded corners */
+  color: #fff;           /* Optional: for contrast */
+  display: inline;
+}
+mark {
+  color: #000000;
+  font-size: 32px;
+  background-color: #f0f0f0;
+  font-weight: bold;
+  font-family: 'Cal Sans', sans-serif;
+  font-weight: 300;
+}
+.gray-box {
+  background-color: #f0f0f0;   /* Light gray */
+  border-radius: 10px;         /* Rounded corners */
+  padding: 8px;               /* Space inside the box */
+  display: block;
+  width: 100%;       /* Shrink to fit content, or use block for full width */
+  margin: 10px 0;               /* Optional: space above/below */
 }
