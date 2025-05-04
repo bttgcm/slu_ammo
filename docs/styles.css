@@ -33,4 +33,15 @@
     color: #000000;
     pointer-events: none;
   }
-  
+  .navbar-brand img {
+    height: 90px !important;
+    width: auto;
+  }
+h1, h2, h3 {
+  color: #03865a;
+}
+
+h4 {
+  color: #03865a;
+  font-weight: bold;
+}
