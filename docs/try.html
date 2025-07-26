@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ammonia Projekt</title>
+<title>Ammonia kalkylatoraaa – Ammonia Projekt</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -66,6 +100,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -114,25 +152,180 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ammonia kalkylatoraaa</h1>
+</div>
 
 
 
-<section id="project-title" class="level1">
-<h1>Project title</h1>
-<section id="scope" class="level2">
-<h2 class="anchored" data-anchor-id="scope">Scope</h2>
-</section>
-<section id="tools" class="level2">
-<h2 class="anchored" data-anchor-id="tools">Tools</h2>
-</section>
-<section id="links" class="level2">
-<h2 class="anchored" data-anchor-id="links">Links</h2>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
-</section>
-</section>
+</header>
+
+
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="16" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 15;"><span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>options <span class="op">=</span> [</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>{<span class="dt">label</span><span class="op">:</span> <span class="st">"Option A"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">10</span>}<span class="op">,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>{<span class="dt">label</span><span class="op">:</span> <span class="st">"Option B"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">20</span>}<span class="op">,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>{<span class="dt">label</span><span class="op">:</span> <span class="st">"Option C"</span><span class="op">,</span> <span class="dt">value</span><span class="op">:</span> <span class="dv">30</span>}</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>viewof selectedOption <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(options<span class="op">,</span> {</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="dt">label</span><span class="op">:</span> <span class="st">"Choose an option:"</span><span class="op">,</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="dt">format</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">label</span> <span class="co">// Shows label in dropdown</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> selectedOption<span class="op">.</span><span class="at">value</span> <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="34" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 33;"><span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>slider <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3-simple-slider@2"</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>container <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div id="slider"&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="41" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 40;"><span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>viewof d3slider <span class="op">=</span> {</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create a container to hold the slider SVG</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> div <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div&gt;&lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create slider state and a setter for reactivity</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> value <span class="op">=</span> <span class="dv">50</span><span class="op">;</span> <span class="co">// default initial value</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create the SVG element</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> width <span class="op">=</span> <span class="dv">300</span><span class="op">,</span> height <span class="op">=</span> <span class="dv">70</span><span class="op">;</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> svg <span class="op">=</span> d3<span class="op">.</span><span class="fu">select</span>(div)</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"svg"</span>)</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"width"</span><span class="op">,</span> width)</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"height"</span><span class="op">,</span> height)</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">append</span>(<span class="st">"g"</span>)</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">attr</span>(<span class="st">"transform"</span><span class="op">,</span> <span class="st">"translate(30,30)"</span>)<span class="op">;</span></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Setup the horizontal slider</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> mySlider <span class="op">=</span> slider<span class="op">.</span><span class="fu">sliderHorizontal</span>()</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">min</span>(<span class="dv">0</span>)</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">max</span>(<span class="dv">100</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">step</span>(<span class="dv">1</span>)</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">width</span>(<span class="dv">200</span>)</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">displayValue</span>(<span class="kw">true</span>)</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">on</span>(<span class="st">"onchange"</span><span class="op">,</span> v <span class="kw">=&gt;</span> {</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>      value <span class="op">=</span> v<span class="op">;</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>      div<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span>  <span class="co">// Sets the .value property that Quarto/OJS watches</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>  svg<span class="op">.</span><span class="fu">call</span>(mySlider)<span class="op">;</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Initialize</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  mySlider<span class="op">.</span><span class="fu">value</span>(value)<span class="op">;</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>  div<span class="op">.</span><span class="at">value</span> <span class="op">=</span> value<span class="op">;</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> div<span class="op">;</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="quarto-ojs-syntax-error">
+<div class="sourceCode" id="cb4" data-startfrom="81" data-syntax-error-position="32" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 80;"><span id="cb4-81"><a href="#cb4-81"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb4-82"><a href="#cb4-82"></a><span class="co">//| echo: false</span></span>
+<span id="cb4-83"><a href="#cb4-83"></a><span class="dt">double</span> <span class="op">=</span> d3slider <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a></span>
+<span id="cb4-85"><a href="#cb4-85"></a>  <span class="op">&lt;</span>div <span class="kw">class</span><span class="op">=</span><span class="st">"gray-box"</span><span class="op">&gt;</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a>  Giva<span class="op">:</span>  <span class="op">&lt;</span>mark<span class="op">&gt;</span>$<span class="op">{</span><span class="dt">double</span><span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">3</span><span class="op">)}&lt;/</span>mark<span class="op">&gt;</span></span>
+<span id="cb4-87"><a href="#cb4-87"></a>  m3<span class="op">/</span>ha<span class="op">&lt;</span>br<span class="op">&gt;</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span>`</span>
+<span id="cb4-89"><a href="#cb4-89"></a></span>
+<span id="cb4-90"><a href="#cb4-90"></a></span>
+<span id="cb4-91"><a href="#cb4-91"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+OJS Syntax Error (line 85, column 8)Unexpected token
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
+
+
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Im9wdGlvbnMgPSBbXHJcbntsYWJlbDogXCJPcHRpb24gQVwiLCB2YWx1ZTogMTB9LFxyXG57bGFiZWw6IFwiT3B0aW9uIEJcIiwgdmFsdWU6IDIwfSxcclxue2xhYmVsOiBcIk9wdGlvbiBDXCIsIHZhbHVlOiAzMH1cclxuXVxyXG5cclxudmlld29mIHNlbGVjdGVkT3B0aW9uID0gSW5wdXRzLnNlbGVjdChvcHRpb25zLCB7XHJcbmxhYmVsOiBcIkNob29zZSBhbiBvcHRpb246XCIsXHJcbmZvcm1hdDogZCA9PiBkLmxhYmVsIC8vIFNob3dzIGxhYmVsIGluIGRyb3Bkb3duXHJcbn0pXHJcblxyXG5yZXN1bHQgPSBzZWxlY3RlZE9wdGlvbi52YWx1ZSAqIDJcclxucmVzdWx0XHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6ImQzID0gcmVxdWlyZShcImQzQDdcIilcclxuc2xpZGVyID0gcmVxdWlyZShcImQzLXNpbXBsZS1zbGlkZXJAMlwiKVxyXG5cclxuY29udGFpbmVyID0gaHRtbGA8ZGl2IGlkPVwic2xpZGVyXCI+PC9kaXY+YFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgZDNzbGlkZXIgPSB7XHJcbiAgLy8gQ3JlYXRlIGEgY29udGFpbmVyIHRvIGhvbGQgdGhlIHNsaWRlciBTVkdcclxuICBjb25zdCBkaXYgPSBodG1sYDxkaXY+PC9kaXY+YDtcclxuXHJcbiAgLy8gQ3JlYXRlIHNsaWRlciBzdGF0ZSBhbmQgYSBzZXR0ZXIgZm9yIHJlYWN0aXZpdHlcclxuICBsZXQgdmFsdWUgPSA1MDsgLy8gZGVmYXVsdCBpbml0aWFsIHZhbHVlXHJcblxyXG4gIC8vIENyZWF0ZSB0aGUgU1ZHIGVsZW1lbnRcclxuICBjb25zdCB3aWR0aCA9IDMwMCwgaGVpZ2h0ID0gNzA7XHJcbiAgY29uc3Qgc3ZnID0gZDMuc2VsZWN0KGRpdilcclxuICAgIC5hcHBlbmQoXCJzdmdcIilcclxuICAgIC5hdHRyKFwid2lkdGhcIiwgd2lkdGgpXHJcbiAgICAuYXR0cihcImhlaWdodFwiLCBoZWlnaHQpXHJcbiAgICAuYXBwZW5kKFwiZ1wiKVxyXG4gICAgLmF0dHIoXCJ0cmFuc2Zvcm1cIiwgXCJ0cmFuc2xhdGUoMzAsMzApXCIpO1xyXG5cclxuICAvLyBTZXR1cCB0aGUgaG9yaXpvbnRhbCBzbGlkZXJcclxuICBjb25zdCBteVNsaWRlciA9IHNsaWRlci5zbGlkZXJIb3Jpem9udGFsKClcclxuICAgIC5taW4oMClcclxuICAgIC5tYXgoMTAwKVxyXG4gICAgLnN0ZXAoMSlcclxuICAgIC53aWR0aCgyMDApXHJcbiAgICAuZGlzcGxheVZhbHVlKHRydWUpXHJcbiAgICAub24oXCJvbmNoYW5nZVwiLCB2ID0+IHtcclxuICAgICAgdmFsdWUgPSB2O1xyXG4gICAgICBkaXYudmFsdWUgPSB2YWx1ZTsgIC8vIFNldHMgdGhlIC52YWx1ZSBwcm9wZXJ0eSB0aGF0IFF1YXJ0by9PSlMgd2F0Y2hlc1xyXG4gICAgfSk7XHJcblxyXG4gIHN2Zy5jYWxsKG15U2xpZGVyKTtcclxuXHJcbiAgLy8gSW5pdGlhbGl6ZVxyXG4gIG15U2xpZGVyLnZhbHVlKHZhbHVlKTtcclxuICBkaXYudmFsdWUgPSB2YWx1ZTtcclxuICByZXR1cm4gZGl2O1xyXG59XHJcblxyXG5cclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdzZWxlY3RlZE9wdGlvbicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdkM3NsaWRlcicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

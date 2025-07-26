@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -147,9 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -157,19 +155,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="11" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 10;"><span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;style&gt;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="vs">.header-flex {</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="vs">  display: flex;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="vs">  align-items: center;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="vs">  margin-bottom: 0em;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="vs">}</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="vs">.header-title {</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="vs">  font-size: 1.5em;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="vs">  font-weight: bold;</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="vs">}</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/style&gt;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="13" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 12;"><span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;style&gt;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="vs">.header-flex {</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="vs">  display: flex;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="vs">  align-items: center;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="vs">  margin-bottom: 0em;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="vs">}</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="vs">.header-title {</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="vs">  font-size: 1.5em;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="vs">  font-weight: bold;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="vs">}</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/style&gt;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-1" data-nodetype="expression">
 
@@ -185,186 +183,198 @@ Gödselvärde behandlat klosettvatten
 <p></p>
 </div>
 </div>
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="42" data-source-offset="-20"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 41;"><span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Klosettvatten startvärden&lt;/h4&gt;</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>viewof torbu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">14</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">9</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Torrsubstans (%)"</span>})</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>viewof kvare <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Kväve (g/L)"</span>})</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Behandling:&lt;/h4&gt;</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>viewof klosevatten <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">1500</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Klosettvatten (m3)"</span>})</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>viewof urea <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Urea-dos (kg/m3)"</span>})</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Gödsling:&lt;/h4&gt;</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>viewof totalkvave <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">160</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Totalkväve (kg/ha)"</span>})</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>totalkvave_f <span class="op">=</span> <span class="fl">0.17</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>  ammonia_f <span class="op">=</span> <span class="fl">0.14</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>  fosfor_f <span class="op">=</span> <span class="fl">0.019</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>  kalium_f <span class="op">=</span> <span class="fl">0.045</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>  svavel_f <span class="op">=</span> <span class="fl">0.11</span></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  totalkvave_k <span class="op">=</span> torbu<span class="op">*</span><span class="dv">10</span><span class="op">*</span>totalkvave_f<span class="op">+</span>urea<span class="op">*</span><span class="fl">0.46</span></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>  ammonia_k <span class="op">=</span> torbu<span class="op">*</span><span class="dv">10</span><span class="op">*</span>ammonia_f<span class="op">+</span>urea<span class="op">*</span><span class="fl">0.46</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>  fosfor_k <span class="op">=</span> torbu<span class="op">*</span><span class="dv">10</span><span class="op">*</span>fosfor_f</span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>  kalium_k <span class="op">=</span> torbu<span class="op">*</span><span class="dv">10</span><span class="op">*</span>kalium_f</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>  svavel_k <span class="op">=</span> torbu<span class="op">*</span><span class="dv">10</span><span class="op">*</span>svavel_f</span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>  giva <span class="op">=</span> totalkvave<span class="op">/</span>totalkvave_k</span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>  Spridningsareal <span class="op">=</span> klosevatten<span class="op">/</span>giva</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>  totalkvave_g <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>  ammonia_g <span class="op">=</span> giva<span class="op">*</span>ammonia_f<span class="op">+</span>urea<span class="op">*</span><span class="fl">0.46</span></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>  fosfor_g <span class="op">=</span> giva<span class="op">*</span>fosfor_f</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>  kalium_g <span class="op">=</span> giva<span class="op">*</span>kalium_f</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>  svavel_g <span class="op">=</span> giva<span class="op">*</span>svavel_f</span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Gödselspridning:&lt;/h4&gt;</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>data1 <span class="op">=</span> [</span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Gödselspridning</span><span class="op">:</span> <span class="st">"Giva (m3/ha)"</span><span class="op">,</span> <span class="st">""</span><span class="op">:</span> giva}<span class="op">,</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Gödselspridning</span><span class="op">:</span> <span class="st">"Spridningsareal (ha)"</span><span class="op">,</span> <span class="st">""</span><span class="op">:</span> Spridningsareal}<span class="op">,</span></span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data1<span class="op">,</span> {<span class="dt">select</span><span class="op">:</span> <span class="kw">false</span>})<span class="op">;</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Resultat:&lt;/h4&gt;</span></span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Total Kvave"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> totalkvave_k<span class="op">,</span><span class="st">"Giva(kg/ha)"</span><span class="op">:</span>totalkvave_g}<span class="op">,</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Ammoniak-kväve"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> ammonia_k<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>ammonia_g}<span class="op">,</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Fosfor"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> fosfor_k<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>fosfor_g}<span class="op">,</span></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Kalium"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> kalium_k<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>kalium_g}<span class="op">,</span></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Svavel"</span><span class="op">,</span><span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> svavel_k<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>svavel_g}<span class="op">,</span></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>Inputs<span class="op">.</span><span class="fu">table</span>(data<span class="op">,</span> {<span class="dt">select</span><span class="op">:</span> <span class="kw">false</span>})<span class="op">;</span></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>koppar <span class="op">=</span> <span class="fl">0.015</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>koppar_max <span class="op">=</span> <span class="dv">300</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>zink <span class="op">=</span> <span class="fl">0.15</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>zink_max <span class="op">=</span> <span class="dv">600</span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>bly <span class="op">=</span> <span class="fl">0.0007</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>bly_max <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>kadmium <span class="op">=</span> <span class="fl">0.0002</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>kadmium_max <span class="op">=</span> <span class="fl">0.75</span></span>
-<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>krom <span class="op">=</span> <span class="fl">0.0019</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>krom_max <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>kvicksilver <span class="op">=</span> <span class="fl">0.00013</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>kvicksilver_max <span class="op">=</span> <span class="fl">1.5</span></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>nickel <span class="op">=</span> <span class="fl">0.0027</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>nickel_max <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="co">// METALS</span></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Tillförsel av metaller till mark:&lt;/h4&gt;</span></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;Tillförsel av metaller till mark (g/ha) vid spridning i jämförelse med tillåten maxtillförsel (g/ ha </span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>ProgressBar <span class="op">=</span> (label<span class="op">,</span> value<span class="op">,</span> max<span class="op">,</span> color) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="progress-row"&gt;</span></span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span class="progress-label"&gt;</span><span class="sc">${</span>label<span class="sc">}</span><span class="vs">:&lt;/span&gt;</span></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="progress-bar-outer"&gt;</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="progress-bar-inner" style="</span></span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">100</span><span class="op">,</span> <span class="dv">100</span> <span class="op">*</span> value <span class="op">/</span> max)<span class="sc">}</span><span class="vs">%;</span></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: </span><span class="sc">${</span>color<span class="sc">}</span><span class="vs">;</span></span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a><span class="vs">      "&gt;&lt;/div&gt;</span></span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="progress-bar-text"&gt;</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>value<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> / </span><span class="sc">${</span>max<span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(<span class="dv">100</span> <span class="op">*</span> value <span class="op">/</span> max)<span class="sc">}</span><span class="vs">%)</span></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Koppar(Cu)"</span><span class="op">,</span> koppar<span class="op">,</span> koppar_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Zink(Zn)"</span><span class="op">,</span> zink<span class="op">,</span> zink_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Bly(Pb)"</span><span class="op">,</span> bly<span class="op">,</span> bly_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Kadmium(Cd)"</span><span class="op">,</span> kadmium<span class="op">,</span> kadmium_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Krom(Cr)"</span><span class="op">,</span> krom<span class="op">,</span> krom_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Kvicksilver(Hg)"</span><span class="op">,</span> kvicksilver<span class="op">,</span> kvicksilver_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="fu">ProgressBar</span>(<span class="st">"Nickel(Ni)"</span><span class="op">,</span> nickel<span class="op">,</span> nickel_max<span class="op">,</span> <span class="st">"#C70039"</span>)</span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;button onclick="window.print()"&gt;Print This Page&lt;/button&gt;</span></span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="40" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 39;"><span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;details&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="vs"> &lt;summary&gt;&lt;span style="font-size:24px;font-weight:bold;color:#03865a;"&gt;Instruktion&lt;/span&gt;&lt;/summary&gt;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="vs">Med det här verktyget uppskattas utifrån angiven ureadosering och torrsubstanshalt i klosettvattnet vilken koncentration av näringsämnen det behandlade klosettvattnet kommer att hålla. När klosettvatten behandlas med urea kommer kvävet vara det näringsämne som styr givan vilket begränsar av ammoniak-kvävet i klosettvattnet. Utifrån kvävebehovet uppskattas hur stor areal som krävs för gödsling med det behandlade klosettvattnet och hur mycket av andra näringsämnen som tillförs via klosettvattnet. För flera metaller finns gränsvärden för innehåll (SFS 1998:944) och hur mycket som maximalt får tillföras odlingsmarken per hektar och år (SNFS 1994:2). Bidraget till näring och metaller from klosettvattnet är baserat på svenska designvärden för toalettavfall (Jönsson mfl. 2005) och används som en faktor relaterat till uppmätt eller antagen torrsubstanshalt. Dessa uppskattningar är tänkta att underlätta planering av ett system för kretslopp från klosettvatten. Om du saknar data behåll givna startvärden som är satta att vara rimliga för klosettvatten insamlat i Sverige med snålspolande toaletter. Inför gödsling skall halter av kväve, fosfor och metallerna nedan analyseras i det aktuella klosettvattnet enligt SNFS 1998:944.</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/details&gt;</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;hr style="border-top:5px  #03865a;"&gt;</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="59" data-source-offset="-20"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 58;"><span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Klosettvatten startvärden&lt;/h4&gt;</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>viewof torbu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.2</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Torrsubstans (%)"</span>})</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>viewof kvare <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.35</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Kväve (g/L)"</span>})</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>viewof NH3 <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">10</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="fl">0.30</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.05</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"NH3/NH4+-kväve (g/L)"</span>})</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Behandling:&lt;/h4&gt;</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>viewof klosevatten <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">5000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Klosettvatten (m3)"</span>})</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>viewof urea <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">5</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Urea-dos (kg/m3)"</span>})</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div&gt;</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Gödsling:&lt;/h4&gt;</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>viewof totalkvave <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">160</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">150</span><span class="op">,</span><span class="dt">step</span><span class="op">:</span> <span class="fl">0.1</span><span class="op">,</span><span class="dt">label</span><span class="op">:</span> <span class="st">"Totalkväve (kg/ha)"</span>})</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;style&gt;</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="vs">  th { color: #222 !important; }</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/style&gt;`</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>totalkvave_f <span class="op">=</span> <span class="fl">0.17</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>  ammonia_f <span class="op">=</span> <span class="fl">0.14</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>  fosfor_f <span class="op">=</span> <span class="fl">0.019</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>  kalium_f <span class="op">=</span> <span class="fl">0.045</span></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>  svavel_f <span class="op">=</span> <span class="fl">0.11</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>  totalkvave_k <span class="op">=</span> NH3<span class="op">*</span><span class="fl">1.179</span><span class="op">+</span>urea<span class="op">*</span><span class="dv">10</span><span class="op">*</span><span class="fl">0.46</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>  ammonia_k <span class="op">=</span> NH3</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>  fosfor_k <span class="op">=</span> NH3<span class="op">*</span><span class="fl">0.132</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>  kalium_k <span class="op">=</span> NH3<span class="op">*</span><span class="fl">0.082</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  svavel_k <span class="op">=</span> NH3<span class="op">*</span><span class="fl">0.311</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>  giva <span class="op">=</span> totalkvave<span class="op">/</span>totalkvave_k</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>  Spridningsareal <span class="op">=</span> klosevatten<span class="op">/</span>giva</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>  totalkvave_g <span class="op">=</span> totalkvave</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>  ammonia_g <span class="op">=</span> giva<span class="op">*</span>ammonia_k</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>  fosfor_g <span class="op">=</span> giva<span class="op">*</span>fosfor_k</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>  kalium_g <span class="op">=</span> giva<span class="op">*</span>kalium_k</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>  svavel_g <span class="op">=</span> giva<span class="op">*</span>svavel_k</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>  data1 <span class="op">=</span> [</span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Gödselspridning</span><span class="op">:</span> <span class="st">"Giva (m3/ha)"</span><span class="op">,</span> <span class="st">""</span><span class="op">:</span> giva}<span class="op">,</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Gödselspridning</span><span class="op">:</span> <span class="st">"Spridningsareal (ha)"</span><span class="op">,</span> <span class="st">""</span><span class="op">:</span> Spridningsareal<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}<span class="op">,</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="gray-box"&gt;</span></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;h4&gt;Gödselspridning:&lt;/h4&gt;</span></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a><span class="vs">  Giva:  &lt;mark&gt;</span><span class="sc">${</span>giva<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/mark&gt;</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a><span class="vs">  m3/ha&lt;br&gt;</span></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a><span class="vs">  Spridningsareal: &lt;mark&gt;</span><span class="sc">${</span>Spridningsareal<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/mark&gt;</span></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a><span class="vs">   ha</span></span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Total Kvave"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> totalkvave_k<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="op">,</span><span class="st">"Giva(kg/ha)"</span><span class="op">:</span>totalkvave_g<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}<span class="op">,</span></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Ammoniak-kväve"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> ammonia_k<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>ammonia_g<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}<span class="op">,</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Fosfor"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> fosfor_k<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>fosfor_g<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}<span class="op">,</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Kalium"</span><span class="op">,</span> <span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> kalium_k<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>kalium_g<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}<span class="op">,</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Näringsämne</span><span class="op">:</span> <span class="st">"Svavel"</span><span class="op">,</span><span class="st">"Koncentration(kg/ton)"</span><span class="op">:</span> svavel_k<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="op">,</span> <span class="st">"Giva(kg/ha)"</span><span class="op">:</span>svavel_g<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)}<span class="op">,</span></span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="gray-box"&gt;</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Resultat:&lt;/h4&gt;</span></span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;table&gt;</span></span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;thead &gt;</span></span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;tr&gt;</span></span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;th style="background-color: transparent;&gt;&lt;/th&gt;</span></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;th style="background-color: transparent;&gt;Näringsämne&lt;/th&gt;</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;th style="background-color: transparent;"&gt;Koncentration(kg/ton)&lt;/th&gt;</span></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;th style="background-color: transparent;"&gt;Giva(kg/ha)&lt;/th&gt;</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/tr&gt;</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/thead&gt;</span></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;tbody&gt;</span></span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a><span class="vs">      </span><span class="sc">${</span>data<span class="op">.</span><span class="fu">map</span>(row <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;tr&gt;</span></span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;td&gt;</span><span class="sc">${</span>row[<span class="st">"Näringsämne"</span>]<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;td&gt;</span><span class="sc">${</span>row[<span class="st">"Koncentration(kg/ton)"</span>]<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;td&gt;</span><span class="sc">${</span>row[<span class="st">"Giva(kg/ha)"</span>]<span class="sc">}</span><span class="vs">&lt;/td&gt;</span></span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/tr&gt;</span></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a><span class="vs">      `</span>)<span class="sc">}</span></span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/tbody&gt;</span></span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/table&gt;</span></span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>koppar <span class="op">=</span> <span class="fl">0.015</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>koppar_max <span class="op">=</span> <span class="dv">300</span></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>zink <span class="op">=</span> <span class="fl">0.15</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>zink_max <span class="op">=</span> <span class="dv">600</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>bly <span class="op">=</span> <span class="fl">0.0007</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>bly_max <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>kadmium <span class="op">=</span> <span class="fl">0.0002</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>kadmium_max <span class="op">=</span> <span class="fl">0.75</span></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>krom <span class="op">=</span> <span class="fl">0.0019</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>krom_max <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>kvicksilver <span class="op">=</span> <span class="fl">0.00013</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>kvicksilver_max <span class="op">=</span> <span class="fl">1.5</span></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>nickel <span class="op">=</span> <span class="fl">0.0027</span><span class="op">*</span>torbu<span class="op">*</span><span class="dv">10</span></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>nickel_max <span class="op">=</span> <span class="dv">25</span></span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a><span class="co">// Using Puppeteer (server-side) or browser APIs</span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">function</span> <span class="fu">printToPDF</span>() {</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="st">'showSaveFilePicker'</span> <span class="kw">in</span> <span class="bu">window</span>) {</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Modern browsers</span></span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> fileHandle <span class="op">=</span> <span class="cf">await</span> <span class="bu">window</span><span class="op">.</span><span class="fu">showSaveFilePicker</span>({</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>      <span class="dt">suggestedName</span><span class="op">:</span> <span class="st">'document.pdf'</span><span class="op">,</span></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>      <span class="dt">types</span><span class="op">:</span> [{</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>        <span class="dt">description</span><span class="op">:</span> <span class="st">'PDF files'</span><span class="op">,</span></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>        <span class="dt">accept</span><span class="op">:</span> { <span class="st">'application/pdf'</span><span class="op">:</span> [<span class="st">'.pdf'</span>] }</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>      }]</span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Implementation depends on your PDF library</span></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Fallback to window.print()</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a>    <span class="bu">window</span><span class="op">.</span><span class="fu">print</span>()<span class="op">;</span></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a><span class="co">// Utility function stays outside the reactive computation</span></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>ProgressBar2 <span class="op">=</span> (label<span class="op">,</span> value<span class="op">,</span> max<span class="op">,</span> color) <span class="kw">=&gt;</span> <span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="progress-row"&gt;</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;span class="progress-label"&gt;</span><span class="sc">${</span>label<span class="sc">}</span><span class="vs">:&lt;/span&gt;</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="progress-bar-outer"&gt;</span></span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="progress-bar-inner" style="</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">100</span><span class="op">,</span> <span class="dv">100</span> <span class="op">*</span> value <span class="op">/</span> max)<span class="sc">}</span><span class="vs">%;</span></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: </span><span class="sc">${</span>color<span class="sc">}</span><span class="vs">;</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="vs">      "&gt;&lt;/div&gt;</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="progress-bar-text"&gt;</span></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a><span class="vs">        </span><span class="sc">${</span>value<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs"> / </span><span class="sc">${</span>max<span class="sc">}</span><span class="vs"> (</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(<span class="dv">100</span> <span class="op">*</span> value <span class="op">/</span> max)<span class="sc">}</span><span class="vs">%)</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="gray-box"&gt;</span></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h4&gt;Tillförsel av metaller till mark:&lt;/h4&gt;</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p&gt;Tillförsel av metaller till mark (g/ha) vid spridning i jämförelse med tillåten maxtillförsel (g/ ha )</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="progress-container"&gt;</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Bly(Pb)"</span><span class="op">,</span> bly<span class="op">,</span> bly_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Kadmium(Cd)"</span><span class="op">,</span> kadmium<span class="op">,</span> kadmium_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Koppar(Cu)"</span><span class="op">,</span> koppar<span class="op">,</span> koppar_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Krom(Cr)"</span><span class="op">,</span> krom<span class="op">,</span> krom_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Kvicksilver(Hg)"</span><span class="op">,</span> kvicksilver<span class="op">,</span> kvicksilver_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Nickel(Ni)"</span><span class="op">,</span> nickel<span class="op">,</span> nickel_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a><span class="vs">    </span><span class="sc">${</span><span class="fu">ProgressBar2</span>(<span class="st">"Zink(Zn)"</span><span class="op">,</span> zink<span class="op">,</span> zink_max<span class="op">,</span> <span class="st">"#03865a"</span>)<span class="sc">}</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;</span></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;`</span></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;button onclick="window.print()" style="background-color: #03865a; color: white; border: none; padding: 8px 20px; border-radius: 4px;"&gt;</span></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="vs">  Print to PDF</span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/button&gt;</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-layout-panel" data-layout="[0.48, -0.04, 0.48]">
 <div class="quarto-layout-row">
 <div class="cell quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-1" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-2" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-3" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-4" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-6" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-7" data-nodetype="expression">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-</div>
-<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 4.0%;justify-content: flex-start;">
-<p>&nbsp;</p>
-</div>
-<div class="cell quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-3-1" data-nodetype="declaration">
+<div id="ojs-cell-3-1" data-nodetype="expression">
 
 </div>
 </div>
@@ -392,7 +402,7 @@ Gödselvärde behandlat klosettvatten
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-5" data-nodetype="declaration">
+<div id="ojs-cell-3-5" data-nodetype="expression">
 
 </div>
 </div>
@@ -413,7 +423,7 @@ Gödselvärde behandlat klosettvatten
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-8" data-nodetype="declaration">
+<div id="ojs-cell-3-8" data-nodetype="expression">
 
 </div>
 </div>
@@ -425,275 +435,287 @@ Gödselvärde behandlat klosettvatten
 </div>
 </div>
 </div>
+</div>
+<div class="quarto-figure-spacer quarto-layout-cell" style="flex-basis: 4.0%;justify-content: flex-start;">
+<p>&nbsp;</p>
+</div>
+<div class="cell quarto-layout-cell" style="flex-basis: 48.0%;justify-content: flex-start;">
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-10" data-nodetype="declaration">
+<div id="ojs-cell-4-1" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-11" data-nodetype="declaration">
+<div id="ojs-cell-4-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-12" data-nodetype="declaration">
+<div id="ojs-cell-4-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-13" data-nodetype="declaration">
+<div id="ojs-cell-4-4" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-14" data-nodetype="declaration">
+<div id="ojs-cell-4-5" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-15" data-nodetype="declaration">
+<div id="ojs-cell-4-6" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-16" data-nodetype="declaration">
+<div id="ojs-cell-4-7" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-17" data-nodetype="declaration">
+<div id="ojs-cell-4-8" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-18" data-nodetype="expression">
+<div id="ojs-cell-4-9" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-19" data-nodetype="declaration">
+<div id="ojs-cell-4-10" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-20" data-nodetype="expression">
+<div id="ojs-cell-4-11" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-21" data-nodetype="expression">
+<div id="ojs-cell-4-12" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-22" data-nodetype="declaration">
+<div id="ojs-cell-4-13" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-23" data-nodetype="expression">
+<div id="ojs-cell-4-14" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-24" data-nodetype="declaration">
+<div id="ojs-cell-4-15" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-25" data-nodetype="declaration">
+<div id="ojs-cell-4-16" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-26" data-nodetype="declaration">
+<div id="ojs-cell-4-17" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-27" data-nodetype="declaration">
+<div id="ojs-cell-4-18" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-28" data-nodetype="declaration">
+<div id="ojs-cell-4-19" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-29" data-nodetype="declaration">
+<div id="ojs-cell-4-20" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-30" data-nodetype="declaration">
+<div id="ojs-cell-4-21" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-31" data-nodetype="declaration">
+<div id="ojs-cell-4-22" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-32" data-nodetype="declaration">
+<div id="ojs-cell-4-23" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-33" data-nodetype="declaration">
+<div id="ojs-cell-4-24" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-34" data-nodetype="declaration">
+<div id="ojs-cell-4-25" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-35" data-nodetype="declaration">
+<div id="ojs-cell-4-26" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-36" data-nodetype="declaration">
+<div id="ojs-cell-4-27" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-37" data-nodetype="declaration">
+<div id="ojs-cell-4-28" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-38" data-nodetype="expression">
+<div id="ojs-cell-4-29" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-39" data-nodetype="expression">
+<div id="ojs-cell-4-30" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-40" data-nodetype="declaration">
+<div id="ojs-cell-4-31" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-41" data-nodetype="expression">
+<div id="ojs-cell-4-32" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-42" data-nodetype="expression">
+<div id="ojs-cell-4-33" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-43" data-nodetype="expression">
+<div id="ojs-cell-4-34" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-44" data-nodetype="expression">
+<div id="ojs-cell-4-35" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-45" data-nodetype="expression">
+<div id="ojs-cell-4-36" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-46" data-nodetype="expression">
+<div id="ojs-cell-4-37" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-47" data-nodetype="expression">
+<div id="ojs-cell-4-38" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-48" data-nodetype="expression">
+<div id="ojs-cell-4-39" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-4-40" data-nodetype="expression">
 
 </div>
 </div>
@@ -701,12 +723,14 @@ Gödselvärde behandlat klosettvatten
 </div>
 </div>
 </div>
+<hr>
+<p>Detta verktyg utvecklades inom projekt JTI-21-83-613 finansierat av JTI-Stiftelsen under tema Cirkularitet/restströmmar.</p>
 
 
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgXHJcbjxzdHlsZT5cclxuLmhlYWRlci1mbGV4IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbWFyZ2luLWJvdHRvbTogMGVtO1xyXG59XHJcbi5oZWFkZXItdGl0bGUge1xyXG4gIGZvbnQtc2l6ZTogMS41ZW07XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuPC9zdHlsZT5cclxuYFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcclxuLy8gSW5wdXQgbnVtYmVyc1xyXG5odG1sYDxkaXY+XHJcbiAgPGg0Pktsb3NldHR2YXR0ZW4gc3RhcnR2w6RyZGVuPC9oND5cclxuPC9kaXY+YFxyXG52aWV3b2YgdG9yYnUgPSBJbnB1dHMucmFuZ2UoWzEsIDE0XSwge3ZhbHVlOiA5LHN0ZXA6IDAuMSxsYWJlbDogXCJUb3Jyc3Vic3RhbnMgKCUpXCJ9KVxyXG52aWV3b2Yga3ZhcmUgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHt2YWx1ZTogNSxzdGVwOiAwLjEsbGFiZWw6IFwiS3bDpHZlIChnL0wpXCJ9KVxyXG5cclxuaHRtbGA8ZGl2PlxyXG4gIDxoND5CZWhhbmRsaW5nOjwvaDQ+XHJcbjwvZGl2PmBcclxudmlld29mIGtsb3NldmF0dGVuID0gSW5wdXRzLnJhbmdlKFswLCAxNTAwXSwge3ZhbHVlOiAxMCxzdGVwOiAwLjEsbGFiZWw6IFwiS2xvc2V0dHZhdHRlbiAobTMpXCJ9KVxyXG52aWV3b2YgdXJlYSA9IElucHV0cy5yYW5nZShbMCwgMTAwXSwge3ZhbHVlOiAxMDAwLHN0ZXA6IDAuMSxsYWJlbDogXCJVcmVhLWRvcyAoa2cvbTMpXCJ9KVxyXG5cclxuaHRtbGA8ZGl2PlxyXG4gIDxoND5Hw7Zkc2xpbmc6PC9oND5cclxuPC9kaXY+YFxyXG52aWV3b2YgdG90YWxrdmF2ZSA9IElucHV0cy5yYW5nZShbMCwgMTYwXSwge3ZhbHVlOiA2MCxzdGVwOiAwLjEsbGFiZWw6IFwiVG90YWxrdsOkdmUgKGtnL2hhKVwifSlcclxuXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG4gIHRvdGFsa3ZhdmVfZiA9IDAuMTdcclxuICBhbW1vbmlhX2YgPSAwLjE0XHJcbiAgZm9zZm9yX2YgPSAwLjAxOVxyXG4gIGthbGl1bV9mID0gMC4wNDVcclxuICBzdmF2ZWxfZiA9IDAuMTFcclxuICBcclxuICB0b3RhbGt2YXZlX2sgPSB0b3JidSoxMCp0b3RhbGt2YXZlX2YrdXJlYSowLjQ2XHJcbiAgYW1tb25pYV9rID0gdG9yYnUqMTAqYW1tb25pYV9mK3VyZWEqMC40NlxyXG4gIGZvc2Zvcl9rID0gdG9yYnUqMTAqZm9zZm9yX2ZcclxuICBrYWxpdW1fayA9IHRvcmJ1KjEwKmthbGl1bV9mXHJcbiAgc3ZhdmVsX2sgPSB0b3JidSoxMCpzdmF2ZWxfZlxyXG4gIFxyXG4gIGdpdmEgPSB0b3RhbGt2YXZlL3RvdGFsa3ZhdmVfa1xyXG4gIFNwcmlkbmluZ3NhcmVhbCA9IGtsb3NldmF0dGVuL2dpdmFcclxuICBcclxuICB0b3RhbGt2YXZlX2cgPSAxMDBcclxuICBhbW1vbmlhX2cgPSBnaXZhKmFtbW9uaWFfZit1cmVhKjAuNDZcclxuICBmb3Nmb3JfZyA9IGdpdmEqZm9zZm9yX2ZcclxuICBrYWxpdW1fZyA9IGdpdmEqa2FsaXVtX2ZcclxuICBzdmF2ZWxfZyA9IGdpdmEqc3ZhdmVsX2ZcclxuICBcclxuaHRtbGA8ZGl2PlxyXG4gIDxoND5Hw7Zkc2Vsc3ByaWRuaW5nOjwvaDQ+XHJcbjwvZGl2PmBcclxuXHJcbiAgZGF0YTEgPSBbXHJcbiAge0fDtmRzZWxzcHJpZG5pbmc6IFwiR2l2YSAobTMvaGEpXCIsIFwiXCI6IGdpdmF9LFxyXG4gIHtHw7Zkc2Vsc3ByaWRuaW5nOiBcIlNwcmlkbmluZ3NhcmVhbCAoaGEpXCIsIFwiXCI6IFNwcmlkbmluZ3NhcmVhbH0sXHJcbl1cclxuXHJcbklucHV0cy50YWJsZShkYXRhMSwge3NlbGVjdDogZmFsc2V9KTtcclxuXHJcbiAgXHJcbmh0bWxgPGRpdj5cclxuICA8aDQ+UmVzdWx0YXQ6PC9oND5cclxuPC9kaXY+YFxyXG4gIGRhdGEgPSBbXHJcbiAge07DpHJpbmdzw6RtbmU6IFwiVG90YWwgS3ZhdmVcIiwgXCJLb25jZW50cmF0aW9uKGtnL3RvbilcIjogdG90YWxrdmF2ZV9rLFwiR2l2YShrZy9oYSlcIjp0b3RhbGt2YXZlX2d9LFxyXG4gIHtOw6RyaW5nc8OkbW5lOiBcIkFtbW9uaWFrLWt2w6R2ZVwiLCBcIktvbmNlbnRyYXRpb24oa2cvdG9uKVwiOiBhbW1vbmlhX2ssIFwiR2l2YShrZy9oYSlcIjphbW1vbmlhX2d9LFxyXG4gIHtOw6RyaW5nc8OkbW5lOiBcIkZvc2ZvclwiLCBcIktvbmNlbnRyYXRpb24oa2cvdG9uKVwiOiBmb3Nmb3JfaywgXCJHaXZhKGtnL2hhKVwiOmZvc2Zvcl9nfSxcclxuICB7TsOkcmluZ3PDpG1uZTogXCJLYWxpdW1cIiwgXCJLb25jZW50cmF0aW9uKGtnL3RvbilcIjoga2FsaXVtX2ssIFwiR2l2YShrZy9oYSlcIjprYWxpdW1fZ30sXHJcbiAge07DpHJpbmdzw6RtbmU6IFwiU3ZhdmVsXCIsXCJLb25jZW50cmF0aW9uKGtnL3RvbilcIjogc3ZhdmVsX2ssIFwiR2l2YShrZy9oYSlcIjpzdmF2ZWxfZ30sXHJcbl1cclxuXHJcbklucHV0cy50YWJsZShkYXRhLCB7c2VsZWN0OiBmYWxzZX0pO1xyXG5cclxuXHJcbmtvcHBhciA9IDAuMDE1KnRvcmJ1KjEwXHJcbmtvcHBhcl9tYXggPSAzMDBcclxuXHJcbnppbmsgPSAwLjE1KnRvcmJ1KjEwXHJcbnppbmtfbWF4ID0gNjAwXHJcblxyXG5ibHkgPSAwLjAwMDcqdG9yYnUqMTBcclxuYmx5X21heCA9IDI1XHJcblxyXG5rYWRtaXVtID0gMC4wMDAyKnRvcmJ1KjEwXHJcbmthZG1pdW1fbWF4ID0gMC43NVxyXG5cclxua3JvbSA9IDAuMDAxOSp0b3JidSoxMFxyXG5rcm9tX21heCA9IDQwXHJcblxyXG5rdmlja3NpbHZlciA9IDAuMDAwMTMqdG9yYnUqMTBcclxua3ZpY2tzaWx2ZXJfbWF4ID0gMS41XHJcblxyXG5uaWNrZWwgPSAwLjAwMjcqdG9yYnUqMTBcclxubmlja2VsX21heCA9IDI1XHJcblxyXG5cclxuXHJcbi8vIE1FVEFMU1xyXG5odG1sYDxkaXY+XHJcbiAgPGg0PlRpbGxmw7Zyc2VsIGF2IG1ldGFsbGVyIHRpbGwgbWFyazo8L2g0PlxyXG48L2Rpdj5gXHJcblxyXG5odG1sYDxkaXY+XHJcbiAgPHA+VGlsbGbDtnJzZWwgYXYgbWV0YWxsZXIgdGlsbCBtYXJrIChnL2hhKSB2aWQgc3ByaWRuaW5nIGkgasOkbWbDtnJlbHNlIG1lZCB0aWxsw6V0ZW4gbWF4dGlsbGbDtnJzZWwgKGcvIGhhIFxyXG48L2Rpdj5gXHJcblxyXG4vLyBDcmVhdGUgcHJvZ3Jlc3MgYmFyIHVzaW5nIE9ic2VydmFibGUncyBidWlsdC1pbiBIVE1MIHRlbXBsYXRlXHJcblxyXG5Qcm9ncmVzc0JhciA9IChsYWJlbCwgdmFsdWUsIG1heCwgY29sb3IpID0+IGh0bWxgXHJcbiAgPGRpdiBjbGFzcz1cInByb2dyZXNzLXJvd1wiPlxyXG4gICAgPHNwYW4gY2xhc3M9XCJwcm9ncmVzcy1sYWJlbFwiPiR7bGFiZWx9Ojwvc3Bhbj5cclxuICAgIDxkaXYgY2xhc3M9XCJwcm9ncmVzcy1iYXItb3V0ZXJcIj5cclxuICAgICAgPGRpdiBjbGFzcz1cInByb2dyZXNzLWJhci1pbm5lclwiIHN0eWxlPVwiXHJcbiAgICAgICAgd2lkdGg6ICR7TWF0aC5taW4oMTAwLCAxMDAgKiB2YWx1ZSAvIG1heCl9JTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAke2NvbG9yfTtcclxuICAgICAgXCI+PC9kaXY+XHJcbiAgICAgIDxkaXYgY2xhc3M9XCJwcm9ncmVzcy1iYXItdGV4dFwiPlxyXG4gICAgICAgICR7dmFsdWUudG9GaXhlZCgyKX0gLyAke21heH0gKCR7TWF0aC5yb3VuZCgxMDAgKiB2YWx1ZSAvIG1heCl9JSlcclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICA8L2Rpdj5cclxuYFxyXG5cclxuUHJvZ3Jlc3NCYXIoXCJLb3BwYXIoQ3UpXCIsIGtvcHBhciwga29wcGFyX21heCwgXCIjQzcwMDM5XCIpXHJcblByb2dyZXNzQmFyKFwiWmluayhabilcIiwgemluaywgemlua19tYXgsIFwiI0M3MDAzOVwiKVxyXG5Qcm9ncmVzc0JhcihcIkJseShQYilcIiwgYmx5LCBibHlfbWF4LCBcIiNDNzAwMzlcIilcclxuUHJvZ3Jlc3NCYXIoXCJLYWRtaXVtKENkKVwiLCBrYWRtaXVtLCBrYWRtaXVtX21heCwgXCIjQzcwMDM5XCIpXHJcblByb2dyZXNzQmFyKFwiS3JvbShDcilcIiwga3JvbSwga3JvbV9tYXgsIFwiI0M3MDAzOVwiKVxyXG5Qcm9ncmVzc0JhcihcIkt2aWNrc2lsdmVyKEhnKVwiLCBrdmlja3NpbHZlciwga3ZpY2tzaWx2ZXJfbWF4LCBcIiNDNzAwMzlcIilcclxuUHJvZ3Jlc3NCYXIoXCJOaWNrZWwoTmkpXCIsIG5pY2tlbCwgbmlja2VsX21heCwgXCIjQzcwMDM5XCIpXHJcblxyXG5odG1sYFxyXG48YnV0dG9uIG9uY2xpY2s9XCJ3aW5kb3cucHJpbnQoKVwiPlByaW50IFRoaXMgUGFnZTwvYnV0dG9uPlxyXG5gXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndG9yYnUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgna3ZhcmUnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgna2xvc2V2YXR0ZW4nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndXJlYScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0b3RhbGt2YXZlJykifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgXHJcbjxzdHlsZT5cclxuLmhlYWRlci1mbGV4IHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgbWFyZ2luLWJvdHRvbTogMGVtO1xyXG59XHJcbi5oZWFkZXItdGl0bGUge1xyXG4gIGZvbnQtc2l6ZTogMS41ZW07XHJcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuPC9zdHlsZT5cclxuYFxyXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYFxyXG48ZGV0YWlscz5cclxuIDxzdW1tYXJ5PjxzcGFuIHN0eWxlPVwiZm9udC1zaXplOjI0cHg7Zm9udC13ZWlnaHQ6Ym9sZDtjb2xvcjojMDM4NjVhO1wiPkluc3RydWt0aW9uPC9zcGFuPjwvc3VtbWFyeT5cclxuXHJcbk1lZCBkZXQgaMOkciB2ZXJrdHlnZXQgdXBwc2thdHRhcyB1dGlmcsOlbiBhbmdpdmVuIHVyZWFkb3NlcmluZyBvY2ggdG9ycnN1YnN0YW5zaGFsdCBpIGtsb3NldHR2YXR0bmV0IHZpbGtlbiBrb25jZW50cmF0aW9uIGF2IG7DpHJpbmdzw6RtbmVuIGRldCBiZWhhbmRsYWRlIGtsb3NldHR2YXR0bmV0IGtvbW1lciBhdHQgaMOlbGxhLiBOw6RyIGtsb3NldHR2YXR0ZW4gYmVoYW5kbGFzIG1lZCB1cmVhIGtvbW1lciBrdsOkdmV0IHZhcmEgZGV0IG7DpHJpbmdzw6RtbmUgc29tIHN0eXIgZ2l2YW4gdmlsa2V0IGJlZ3LDpG5zYXIgYXYgYW1tb25pYWsta3bDpHZldCBpIGtsb3NldHR2YXR0bmV0LiBVdGlmcsOlbiBrdsOkdmViZWhvdmV0IHVwcHNrYXR0YXMgaHVyIHN0b3IgYXJlYWwgc29tIGtyw6R2cyBmw7ZyIGfDtmRzbGluZyBtZWQgZGV0IGJlaGFuZGxhZGUga2xvc2V0dHZhdHRuZXQgb2NoIGh1ciBteWNrZXQgYXYgYW5kcmEgbsOkcmluZ3PDpG1uZW4gc29tIHRpbGxmw7ZycyB2aWEga2xvc2V0dHZhdHRuZXQuIEbDtnIgZmxlcmEgbWV0YWxsZXIgZmlubnMgZ3LDpG5zdsOkcmRlbiBmw7ZyIGlubmVow6VsbCAoU0ZTIDE5OTg6OTQ0KSBvY2ggaHVyIG15Y2tldCBzb20gbWF4aW1hbHQgZsOlciB0aWxsZsO2cmFzIG9kbGluZ3NtYXJrZW4gcGVyIGhla3RhciBvY2ggw6VyIChTTkZTIDE5OTQ6MikuIEJpZHJhZ2V0IHRpbGwgbsOkcmluZyBvY2ggbWV0YWxsZXIgZnJvbSBrbG9zZXR0dmF0dG5ldCDDpHIgYmFzZXJhdCBww6Ugc3ZlbnNrYSBkZXNpZ252w6RyZGVuIGbDtnIgdG9hbGV0dGF2ZmFsbCAoSsO2bnNzb24gbWZsLiAyMDA1KSBvY2ggYW52w6RuZHMgc29tIGVuIGZha3RvciByZWxhdGVyYXQgdGlsbCB1cHBtw6R0dCBlbGxlciBhbnRhZ2VuIHRvcnJzdWJzdGFuc2hhbHQuIERlc3NhIHVwcHNrYXR0bmluZ2FyIMOkciB0w6Rua3RhIGF0dCB1bmRlcmzDpHR0YSBwbGFuZXJpbmcgYXYgZXR0IHN5c3RlbSBmw7ZyIGtyZXRzbG9wcCBmcsOlbiBrbG9zZXR0dmF0dGVuLiBPbSBkdSBzYWtuYXIgZGF0YSBiZWjDpWxsIGdpdm5hIHN0YXJ0dsOkcmRlbiBzb20gw6RyIHNhdHRhIGF0dCB2YXJhIHJpbWxpZ2EgZsO2ciBrbG9zZXR0dmF0dGVuIGluc2FtbGF0IGkgU3ZlcmlnZSBtZWQgc27DpWxzcG9sYW5kZSB0b2FsZXR0ZXIuIEluZsO2ciBnw7Zkc2xpbmcgc2thbGwgaGFsdGVyIGF2IGt2w6R2ZSwgZm9zZm9yIG9jaCBtZXRhbGxlcm5hIG5lZGFuIGFuYWx5c2VyYXMgaSBkZXQgYWt0dWVsbGEga2xvc2V0dHZhdHRuZXQgZW5saWd0IFNORlMgMTk5ODo5NDQuXHJcblxyXG48L2RldGFpbHM+XHJcbjxociBzdHlsZT1cImJvcmRlci10b3A6NXB4ICAjMDM4NjVhO1wiPlxyXG5gXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG4vLyBJbnB1dCBudW1iZXJzXHJcbmh0bWxgPGRpdj5cclxuICA8aDQ+S2xvc2V0dHZhdHRlbiBzdGFydHbDpHJkZW48L2g0PlxyXG48L2Rpdj5gXHJcbnZpZXdvZiB0b3JidSA9IElucHV0cy5yYW5nZShbMCwgNl0sIHt2YWx1ZTogMC4yLHN0ZXA6IDAuMSxsYWJlbDogXCJUb3Jyc3Vic3RhbnMgKCUpXCJ9KVxyXG52aWV3b2Yga3ZhcmUgPSBJbnB1dHMucmFuZ2UoWzAsIDEwXSwge3ZhbHVlOiAwLjM1LHN0ZXA6IDAuMDUsbGFiZWw6IFwiS3bDpHZlIChnL0wpXCJ9KVxyXG52aWV3b2YgTkgzID0gSW5wdXRzLnJhbmdlKFswLCAxMF0sIHt2YWx1ZTogMC4zMCxzdGVwOiAwLjA1LGxhYmVsOiBcIk5IMy9OSDQrLWt2w6R2ZSAoZy9MKVwifSlcclxuXHJcblxyXG5cclxuaHRtbGA8ZGl2PlxyXG4gIDxoND5CZWhhbmRsaW5nOjwvaDQ+XHJcbjwvZGl2PmBcclxudmlld29mIGtsb3NldmF0dGVuID0gSW5wdXRzLnJhbmdlKFswLCA1MDAwXSwge3ZhbHVlOiAxMDAwLHN0ZXA6IDUwLGxhYmVsOiBcIktsb3NldHR2YXR0ZW4gKG0zKVwifSlcclxudmlld29mIHVyZWEgPSBJbnB1dHMucmFuZ2UoWzAsIDVdLCB7dmFsdWU6IDEsc3RlcDogMC4xLGxhYmVsOiBcIlVyZWEtZG9zIChrZy9tMylcIn0pXHJcblxyXG5odG1sYDxkaXY+XHJcbiAgPGg0PkfDtmRzbGluZzo8L2g0PlxyXG48L2Rpdj5gXHJcbnZpZXdvZiB0b3RhbGt2YXZlID0gSW5wdXRzLnJhbmdlKFswLCAxNjBdLCB7dmFsdWU6IDE1MCxzdGVwOiAwLjEsbGFiZWw6IFwiVG90YWxrdsOkdmUgKGtnL2hhKVwifSlcclxuXHJcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPHN0eWxlPlxyXG4gIHRoIHsgY29sb3I6ICMyMjIgIWltcG9ydGFudDsgfVxyXG48L3N0eWxlPmBcclxuXHJcbiAgdG90YWxrdmF2ZV9mID0gMC4xN1xyXG4gIGFtbW9uaWFfZiA9IDAuMTRcclxuICBmb3Nmb3JfZiA9IDAuMDE5XHJcbiAga2FsaXVtX2YgPSAwLjA0NVxyXG4gIHN2YXZlbF9mID0gMC4xMVxyXG4gIFxyXG4gIHRvdGFsa3ZhdmVfayA9IE5IMyoxLjE3OSt1cmVhKjEwKjAuNDZcclxuICBhbW1vbmlhX2sgPSBOSDNcclxuICBmb3Nmb3JfayA9IE5IMyowLjEzMlxyXG4gIGthbGl1bV9rID0gTkgzKjAuMDgyXHJcbiAgc3ZhdmVsX2sgPSBOSDMqMC4zMTFcclxuICBcclxuICBnaXZhID0gdG90YWxrdmF2ZS90b3RhbGt2YXZlX2tcclxuICBTcHJpZG5pbmdzYXJlYWwgPSBrbG9zZXZhdHRlbi9naXZhXHJcbiAgXHJcbiAgdG90YWxrdmF2ZV9nID0gdG90YWxrdmF2ZVxyXG4gIGFtbW9uaWFfZyA9IGdpdmEqYW1tb25pYV9rXHJcbiAgZm9zZm9yX2cgPSBnaXZhKmZvc2Zvcl9rXHJcbiAga2FsaXVtX2cgPSBnaXZhKmthbGl1bV9rXHJcbiAgc3ZhdmVsX2cgPSBnaXZhKnN2YXZlbF9rXHJcbiAgXHJcblxyXG4gIGRhdGExID0gW1xyXG4gIHtHw7Zkc2Vsc3ByaWRuaW5nOiBcIkdpdmEgKG0zL2hhKVwiLCBcIlwiOiBnaXZhfSxcclxuICB7R8O2ZHNlbHNwcmlkbmluZzogXCJTcHJpZG5pbmdzYXJlYWwgKGhhKVwiLCBcIlwiOiBTcHJpZG5pbmdzYXJlYWwudG9GaXhlZCgyKX0sXHJcbl1cclxuXHJcblxyXG5odG1sYFxyXG4gIDxkaXYgY2xhc3M9XCJncmF5LWJveFwiPlxyXG4gICAgPGg0PkfDtmRzZWxzcHJpZG5pbmc6PC9oND5cclxuICBHaXZhOiAgPG1hcms+JHtnaXZhLnRvRml4ZWQoMyl9PC9tYXJrPlxyXG4gIG0zL2hhPGJyPlxyXG4gIFNwcmlkbmluZ3NhcmVhbDogPG1hcms+JHtTcHJpZG5pbmdzYXJlYWwudG9GaXhlZCgyKX08L21hcms+XHJcbiAgIGhhXHJcbjwvZGl2PmBcclxuXHJcbiAgZGF0YSA9IFtcclxuICB7TsOkcmluZ3PDpG1uZTogXCJUb3RhbCBLdmF2ZVwiLCBcIktvbmNlbnRyYXRpb24oa2cvdG9uKVwiOiB0b3RhbGt2YXZlX2sudG9GaXhlZCgzKSxcIkdpdmEoa2cvaGEpXCI6dG90YWxrdmF2ZV9nLnRvRml4ZWQoMil9LFxyXG4gIHtOw6RyaW5nc8OkbW5lOiBcIkFtbW9uaWFrLWt2w6R2ZVwiLCBcIktvbmNlbnRyYXRpb24oa2cvdG9uKVwiOiBhbW1vbmlhX2sudG9GaXhlZCgzKSwgXCJHaXZhKGtnL2hhKVwiOmFtbW9uaWFfZy50b0ZpeGVkKDIpfSxcclxuICB7TsOkcmluZ3PDpG1uZTogXCJGb3Nmb3JcIiwgXCJLb25jZW50cmF0aW9uKGtnL3RvbilcIjogZm9zZm9yX2sudG9GaXhlZCgzKSwgXCJHaXZhKGtnL2hhKVwiOmZvc2Zvcl9nLnRvRml4ZWQoMil9LFxyXG4gIHtOw6RyaW5nc8OkbW5lOiBcIkthbGl1bVwiLCBcIktvbmNlbnRyYXRpb24oa2cvdG9uKVwiOiBrYWxpdW1fay50b0ZpeGVkKDMpLCBcIkdpdmEoa2cvaGEpXCI6a2FsaXVtX2cudG9GaXhlZCgyKX0sXHJcbiAge07DpHJpbmdzw6RtbmU6IFwiU3ZhdmVsXCIsXCJLb25jZW50cmF0aW9uKGtnL3RvbilcIjogc3ZhdmVsX2sudG9GaXhlZCgzKSwgXCJHaXZhKGtnL2hhKVwiOnN2YXZlbF9nLnRvRml4ZWQoMil9LFxyXG5dXHJcblxyXG5cclxuICBcclxuaHRtbGA8ZGl2IGNsYXNzPVwiZ3JheS1ib3hcIj5cclxuICA8aDQ+UmVzdWx0YXQ6PC9oND5cclxuICA8dGFibGU+XHJcbiAgICA8dGhlYWQgPlxyXG4gICAgICA8dHI+XHJcbiAgICAgICAgPHRoIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7PjwvdGg+XHJcbiAgICAgICAgPHRoIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7Pk7DpHJpbmdzw6RtbmU8L3RoPlxyXG4gICAgICAgIDx0aCBzdHlsZT1cImJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1wiPktvbmNlbnRyYXRpb24oa2cvdG9uKTwvdGg+XHJcbiAgICAgICAgPHRoIHN0eWxlPVwiYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XCI+R2l2YShrZy9oYSk8L3RoPlxyXG4gICAgICA8L3RyPlxyXG4gICAgPC90aGVhZD5cclxuICAgIDx0Ym9keT5cclxuICAgICAgJHtkYXRhLm1hcChyb3cgPT4gaHRtbGBcclxuICAgICAgICA8dHI+XHJcbiAgICAgICAgICA8dGQ+JHtyb3dbXCJOw6RyaW5nc8OkbW5lXCJdfTwvdGQ+XHJcbiAgICAgICAgICA8dGQ+JHtyb3dbXCJLb25jZW50cmF0aW9uKGtnL3RvbilcIl19PC90ZD5cclxuICAgICAgICAgIDx0ZD4ke3Jvd1tcIkdpdmEoa2cvaGEpXCJdfTwvdGQ+XHJcbiAgICAgICAgPC90cj5cclxuICAgICAgYCl9XHJcbiAgICA8L3Rib2R5PlxyXG4gIDwvdGFibGU+XHJcbjwvZGl2PmBcclxuXHJcblxyXG5cclxuXHJcblxyXG5cclxua29wcGFyID0gMC4wMTUqdG9yYnUqMTBcclxua29wcGFyX21heCA9IDMwMFxyXG5cclxuemluayA9IDAuMTUqdG9yYnUqMTBcclxuemlua19tYXggPSA2MDBcclxuXHJcbmJseSA9IDAuMDAwNyp0b3JidSoxMFxyXG5ibHlfbWF4ID0gMjVcclxuXHJcbmthZG1pdW0gPSAwLjAwMDIqdG9yYnUqMTBcclxua2FkbWl1bV9tYXggPSAwLjc1XHJcblxyXG5rcm9tID0gMC4wMDE5KnRvcmJ1KjEwXHJcbmtyb21fbWF4ID0gNDBcclxuXHJcbmt2aWNrc2lsdmVyID0gMC4wMDAxMyp0b3JidSoxMFxyXG5rdmlja3NpbHZlcl9tYXggPSAxLjVcclxuXHJcbm5pY2tlbCA9IDAuMDAyNyp0b3JidSoxMFxyXG5uaWNrZWxfbWF4ID0gMjVcclxuXHJcblxyXG5cclxuLy8gVXNpbmcgUHVwcGV0ZWVyIChzZXJ2ZXItc2lkZSkgb3IgYnJvd3NlciBBUElzXHJcbmFzeW5jIGZ1bmN0aW9uIHByaW50VG9QREYoKSB7XHJcbiAgaWYgKCdzaG93U2F2ZUZpbGVQaWNrZXInIGluIHdpbmRvdykge1xyXG4gICAgLy8gTW9kZXJuIGJyb3dzZXJzXHJcbiAgICBjb25zdCBmaWxlSGFuZGxlID0gYXdhaXQgd2luZG93LnNob3dTYXZlRmlsZVBpY2tlcih7XHJcbiAgICAgIHN1Z2dlc3RlZE5hbWU6ICdkb2N1bWVudC5wZGYnLFxyXG4gICAgICB0eXBlczogW3tcclxuICAgICAgICBkZXNjcmlwdGlvbjogJ1BERiBmaWxlcycsXHJcbiAgICAgICAgYWNjZXB0OiB7ICdhcHBsaWNhdGlvbi9wZGYnOiBbJy5wZGYnXSB9XHJcbiAgICAgIH1dXHJcbiAgICB9KTtcclxuICAgIC8vIEltcGxlbWVudGF0aW9uIGRlcGVuZHMgb24geW91ciBQREYgbGlicmFyeVxyXG4gIH0gZWxzZSB7XHJcbiAgICAvLyBGYWxsYmFjayB0byB3aW5kb3cucHJpbnQoKVxyXG4gICAgd2luZG93LnByaW50KCk7XHJcbiAgfVxyXG59XHJcblxyXG5cclxuXHJcblxyXG4vLyBVdGlsaXR5IGZ1bmN0aW9uIHN0YXlzIG91dHNpZGUgdGhlIHJlYWN0aXZlIGNvbXB1dGF0aW9uXHJcblByb2dyZXNzQmFyMiA9IChsYWJlbCwgdmFsdWUsIG1heCwgY29sb3IpID0+IGh0bWxgXHJcbiAgPGRpdiBjbGFzcz1cInByb2dyZXNzLXJvd1wiPlxyXG4gICAgPHNwYW4gY2xhc3M9XCJwcm9ncmVzcy1sYWJlbFwiPiR7bGFiZWx9Ojwvc3Bhbj5cclxuICAgIDxkaXYgY2xhc3M9XCJwcm9ncmVzcy1iYXItb3V0ZXJcIj5cclxuICAgICAgPGRpdiBjbGFzcz1cInByb2dyZXNzLWJhci1pbm5lclwiIHN0eWxlPVwiXHJcbiAgICAgICAgd2lkdGg6ICR7TWF0aC5taW4oMTAwLCAxMDAgKiB2YWx1ZSAvIG1heCl9JTtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAke2NvbG9yfTtcclxuICAgICAgXCI+PC9kaXY+XHJcbiAgICAgIDxkaXYgY2xhc3M9XCJwcm9ncmVzcy1iYXItdGV4dFwiPlxyXG4gICAgICAgICR7dmFsdWUudG9GaXhlZCgxKX0gLyAke21heH0gKCR7TWF0aC5yb3VuZCgxMDAgKiB2YWx1ZSAvIG1heCl9JSlcclxuICAgICAgPC9kaXY+XHJcbiAgICA8L2Rpdj5cclxuICA8L2Rpdj5cclxuYFxyXG5cclxuXHJcbmh0bWxgXHJcbiAgPGRpdiBjbGFzcz1cImdyYXktYm94XCI+XHJcbiAgPGg0PlRpbGxmw7Zyc2VsIGF2IG1ldGFsbGVyIHRpbGwgbWFyazo8L2g0PlxyXG4gICAgPHA+VGlsbGbDtnJzZWwgYXYgbWV0YWxsZXIgdGlsbCBtYXJrIChnL2hhKSB2aWQgc3ByaWRuaW5nIGkgasOkbWbDtnJlbHNlIG1lZCB0aWxsw6V0ZW4gbWF4dGlsbGbDtnJzZWwgKGcvIGhhIClcclxuICA8ZGl2IGNsYXNzPVwicHJvZ3Jlc3MtY29udGFpbmVyXCI+XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIkJseShQYilcIiwgYmx5LCBibHlfbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIkthZG1pdW0oQ2QpXCIsIGthZG1pdW0sIGthZG1pdW1fbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIktvcHBhcihDdSlcIiwga29wcGFyLCBrb3BwYXJfbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIktyb20oQ3IpXCIsIGtyb20sIGtyb21fbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIkt2aWNrc2lsdmVyKEhnKVwiLCBrdmlja3NpbHZlciwga3ZpY2tzaWx2ZXJfbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIk5pY2tlbChOaSlcIiwgbmlja2VsLCBuaWNrZWxfbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgICAke1Byb2dyZXNzQmFyMihcIlppbmsoWm4pXCIsIHppbmssIHppbmtfbWF4LCBcIiMwMzg2NWFcIil9XHJcbiAgPC9kaXY+XHJcbjwvZGl2PmBcclxuIC8vIDwtLSBNYWtlIHN1cmUgdG8gb3V0cHV0IHRoaXMgYXMgYSBjZWxsIVxyXG5cclxuXHJcbmh0bWxgXHJcbjxidXR0b24gb25jbGljaz1cIndpbmRvdy5wcmludCgpXCIgc3R5bGU9XCJiYWNrZ3JvdW5kLWNvbG9yOiAjMDM4NjVhOyBjb2xvcjogd2hpdGU7IGJvcmRlcjogbm9uZTsgcGFkZGluZzogOHB4IDIwcHg7IGJvcmRlci1yYWRpdXM6IDRweDtcIj5cclxuICBQcmludCB0byBQREZcclxuPC9idXR0b24+XHJcbmBcclxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0b3JidScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdrdmFyZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdOSDMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgna2xvc2V2YXR0ZW4nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndXJlYScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0b3RhbGt2YXZlJykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
