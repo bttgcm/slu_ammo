@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Ammonia Projekt"
+  navbar:
+    left:
+      - href: ammonia.qmd
+        text: Ammonia kalkylator
+      - href: nutrient.qmd  
+        text: Gödselvärde
+    logo: images/slu_logo.jpg
+
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+
+editor: visual
+
