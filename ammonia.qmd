@@ -1,0 +1,223 @@
+---
+format: 
+  html:
+    css: styles.css
+    toc: false
+include-in-header:
+  text: |
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+---
+
+
+```{ojs}
+//| echo: false
+html`
+<style>
+.header-flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0em;
+}
+.header-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+</style>
+`
+```
+
+:::: header-flex
+::: header-flex
+<span class="header-title">
+
+<h1>Ammonia kalkylator</h1>
+
+</span>
+
+:::
+::::
+
+```{ojs}
+//| echo: false
+html`
+<details>
+ <summary><span style="font-size:24px;font-weight:bold;color:#03865a;">Instruktion</span></summary>
+
+Detta verktyg beräknar behandlingstiden för en 5-log10 reduktion av Escherichia coli baserat på ureados och temperatur i behandlingsbrunn/reaktor. E. coli är en mag-tarm bakterie som alltid förekommer i klosettvatten och inaktiveringen av denna är ett bra mått på inaktiveringen av bakteriella smittämnen. En 5-log10 reduktion innebär att bakterien inaktiverats med 99,999%. Vid en sådan inaktivering av E.coli bör klosettvattnet vara fritt från salmonella vilken förekommer i mycket lägre startkoncentrationer, om den förekommer. Saknar du startvärden kan du ange månad i rulllist och få en förväntad minimitemperatur i brunnen. Tid för nedbrytning av urea är inkluderad i behandingstiden och baseras på angiven temperatur och förutsätter omblandning.  Dessa uppskattningar är tänkta att underlätta planering av ett system för kretslopp från klosettvatten. Inför gödsling bör innehållet av E. coli och salmonella analyseras.
+
+</details>
+<hr style="border-top:5px  #03865a;">
+`
+```
+
+
+
+::: {layout-ncol="2"}
+```{ojs}
+//| echo: false
+html`<div>
+  <h4><strong>Klosettvatten startvärden:</strong></h4>
+</div>`
+viewof dry = Inputs.range([0, 6], {value: 0.2,step: 0.10,label: "Torrsubstans (%)"})
+viewof kvave = Inputs.range([0, 10], {value: 0.35,step: 0.1,label: "Kväve (g/L)"})
+viewof ammokvave = Inputs.range([0, 10], {value: 0.3,step: 0.1,label: "Ammoniak-kväve (g/L)"})
+
+html`<div>
+  <h4>Behandling:</h4>
+</div>`
+viewof va_vol = Inputs.range([0, 5000], {value: 1000,step: 100,label: "Klosettvatten volym (m³)"})
+
+viewof urea = Inputs.range([0, 5], {value: 1,step: 0.1,label: "Urea-dos (%)"})
+
+options = [
+{label: "Okt-mars", value: 10},
+{label: "April-Juni", value: 15},
+{label: "Juli-Sept", value: 20}
+]
+
+viewof selectedOption = Inputs.select(options, {
+label: "Månad (välj i rullist):",
+format: d => d.label // Shows label in dropdown
+})
+
+temp = selectedOption.value
+html`<p>Lagringstemperatur (°C): <strong>${temp.toFixed(0)}</strong></p>
+`
+
+viewof pH = Inputs.range([0, 14], {value: 9,step: 0.1,label: "pH"})
+
+```
+
+```{ojs}
+  tillsats= urea*10
+  tillsatskg = tillsats*va_vol
+  sackar = tillsatskg/750
+  NH3_NH4 =tillsats*0.46+ammokvave
+  pKa = (2729.92 / (temp + 273.15)) + 0.090181
+  f_nh3 = 1 / (10 ** (pKa - pH) + 1)*100
+  nh3_gl = f_nh3/100*NH3_NH4
+  nh3_mm=NH3_NH4*f_nh3/14.01*10
+  temp_c = {
+  if (temp < 25) {
+    return 25 - temp;
+  } else {
+    return 0;
+  }
+}
+  dagar = (temp_c)+(-5/(-0.8*nh3_mm*0.0037*Math.exp(0.066*temp)))
+  
+
+
+// Import Observable Plot
+import {Plot} from "@observablehq/plot"
+
+// Define your function
+myFunction = (x) => ((-0.8*nh3_mm*0.0037*Math.exp(0.066*temp))*x)
+
+// Generate data points
+functionData = {
+  const points = [];
+  for (let x = 0; x <= 50; x += 0.1) {
+    points.push({x: x, y: myFunction(x)});
+  }
+  return points;
+}
+
+//| echo: false
+
+// Define slope
+slope = (-0.8 * nh3_mm * 0.0037 * Math.exp(0.066 * temp))
+x_zero = 15 - 5 / slope
+// Define the function as specified
+myFunction2 = x => {
+  if (x < 15) {
+    return 5;
+  } else {
+    return 5+(-0.8 * nh3_mm * 0.0037 * Math.exp(0.066 * temp)) * (x-15);
+  }
+}
+
+// Generate x values for the plot
+xvals = Array.from({length: Math.floor(x_zero) + 1}, (_, i) => i)
+
+// Calculate y values
+yvals = xvals.map(x => myFunction2(x))
+
+// Prepare data for Plot
+plotData = xvals.map((x, i) => ({x: x, y: yvals[i]}))
+
+
+// Create your plot (no container-dependent width)
+myPlot = Plot.plot({
+  x: {
+    label: "Tid (dagar)",
+    labelFontSize: 20,
+    labelAnchor: "center", 
+    tickSize: 8,
+    tickFormat: d => d.toFixed(1),
+    labelOffset: 40
+  },
+  y: {
+    label: "E.coli (log10/ml)",
+    labelFontSize: 8,
+    labelAnchor: "center", 
+    tickSize: 6,
+    tickFormat: d => d.toFixed(1),
+    labelOffset: 60
+  },
+  marks: [
+    Plot.line(plotData, {x: "x", y: "y", stroke: "#03865a", strokeWidth: 3}),
+    Plot.ruleY([0])
+  ],
+  width: 400, // Use a static width or Observable's `width` variable
+  height: 350,
+  marginLeft: 70,
+  marginBottom: 50,
+  style: { fontSize: "18px" },
+  grid: true
+})
+
+html`
+  <div class="gray-box">
+    <h4>Hygienisering:</h4>
+    Tid för 5-log10 reduktion av E. coli: <mark>${dagar.toFixed(0)} dagar</mark> <br>
+    <br>
+    ${myPlot}
+  </div>
+`
+
+
+
+html`
+  <div class="gray-box">
+      <h4>Ureabehandling:</h4>
+    TillsatsSyrlighet/alkalinitet i rötreste:<mark> ${tillsats.toFixed(1)}</mark> (kg/m3)<br>
+    Tillsats: <mark>${tillsatskg.toFixed(0)}</mark> (kg)<br>
+    Antal säckar: <mark>${sackar.toFixed(1)}</mark> (à 750 kg)<br>
+    NH3/NH4+-kväve: <mark>${NH3_NH4.toFixed(2)}</mark> (g/L)<br>
+    pKa: <mark>${pKa.toFixed(2)}</mark><br>
+    NH3: <mark>${f_nh3.toFixed(2)}</mark> (%)<br>
+    NH3: <mark>${nh3_gl.toFixed(2)}</mark> (g/L)<br>
+    NH3: <mark>${nh3_mm.toFixed(1)}</mark> (mM)<br>
+ ` 
+ 
+html`
+<button onclick="window.print()" style="background-color: #03865a; color: white; border: none; padding: 8px 20px; border-radius: 4px;">
+  Print to PDF
+</button>
+`
+```
+
+
+:::
+
+---
+
+Tiden för nedbrytning av urea beräknas från temperaturen och är tillagd i den total tiden för hygienisering.
+
+Modellen för inaktivering av E. coli beroende på NH3-koncentration och temperatur (Nordin 2010) kan användas för både salmonella och E. coli inaktivering då dessa har visat sig ha liknande inaktivering vid ureabehandling.
+
+---
+
+Detta verktyg utvecklades inom projekt JTI-21-83-613 finansierat av JTI-Stiftelsen under tema Cirkularitet/restströmmar.
