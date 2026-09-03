@@ -92,25 +92,41 @@ h5{
 
 }
 
+.print-timestamp {
+  display: none; /* only shown when printing */
+}
+
 @media print {
   @page {
     size: A4 landscape;
     margin: 1cm; /* Adjust margins as needed */
   }
-  
+
   html, body {
     margin: 0;
     padding: 0;
     background: #FFF;
     font-size: 12pt;
   }
-  
+
+  .print-timestamp {
+    display: block;
+    font-size: 10pt;
+    color: #666;
+    margin-bottom: 0.5em;
+  }
+
+  .gray-box {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
   /* Ensure OJS plots maintain aspect ratio in landscape */
   .observablehq, .plot-container {
     page-break-inside: avoid;
     width: 100% !important;
   }
-  
+
   /* Optimize for landscape layout */
   svg {
     max-width: 100% !important;
