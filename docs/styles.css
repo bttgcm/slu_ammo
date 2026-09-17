@@ -219,10 +219,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 /* Fixed column widths, referenced from the <colgroup> in analysdata.qmd */
 .col-item  { width: 16%; }
+.col-batch { width: 10%; }
 .col-unit  { width: 10%; }
 .col-value { width: 12%; }
 .col-minmax { width: 8%; }
-.col-note  { width: 46%; }
+.col-note  { width: 36%; }
 
 .analys-input {
   width: 80px;
@@ -236,6 +237,29 @@ input[type="range"]::-webkit-slider-thumb {
 .analys-warning {
   color: #b30000;
   font-weight: 600;
+}
+.analys-batch-input {
+  width: 100%;
+  text-align: left;
+  font-weight: normal;
+}
+.meta-row {
+  display: flex;
+  gap: 1.5em;
+  flex-wrap: wrap;
+  margin: 0.5em 0 1em 0;
+}
+.meta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  font-weight: 500;
+}
+.meta-input {
+  padding: 6px 10px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  min-width: 220px;
 }
 .analys-unit {
   width: 100%;
