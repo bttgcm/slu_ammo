@@ -545,9 +545,13 @@ viewof analysdata = {
     // min/max are deliberately NOT set on the <input>: values outside the
     // range must be enterable (and reachable with the spinner arrows) so
     // the out-of-range comment can be shown.
-    row.input.step = u.stepOverride ?? (Math.abs(round(u.fromCanonical(row.p.step, ts))) || dispMax - dispMin || 1);
-    row.minCell.textContent = dispMin;
-    row.maxCell.textContent = dispMax;
+    const step = u.stepOverride ?? (Math.abs(round(u.fromCanonical(row.p.step, ts))) || dispMax - dispMin || 1);
+    row.input.step = step;
+    // Show Min/Max with the same number of decimals as the input's step
+    // (e.g. step 0.01 -> 2 decimals), dropping trailing zeros like the input does.
+    const decimals = Math.max(0, -Math.floor(Math.log10(step)));
+    row.minCell.textContent = Number(dispMin.toFixed(decimals));
+    row.maxCell.textContent = Number(dispMax.toFixed(decimals));
   }
 
   // Redisplays every row's current canonical value in its currently
