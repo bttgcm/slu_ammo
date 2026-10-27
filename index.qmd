@@ -1,7 +1,8 @@
-# Project title
+# Verktyg för kretslopp från avlopp
+Projektet **Verktyg för beslutsfattande och behandlingsoptimering för ammoniak-hygieniserings-teknik - säker och uthållig återföring av resurser från decentraliserade sanitetssystem** finansierades av Stiftelsen JTI (JTI-21-83-613). Projektet har genom interaktion mellan akademi och utövare utvecklat verktyg för att underlätta planering, utförande och förståelse av decentraliserad näringsåterförsel från källsorterade avloppsfraktioner. Projektet fokuserade på ammoniak-hygienisering av svartvatten, vilket praktiseras av en majoritet av de kommuner som återför näring från svartvatten, men flera av verktygen kan användas för svartvatten som inte behandlats med urea.
 
-## Scope
+## Beskrivning
 
-## Tools
+## Verktyg
 
-## Links
+## Länkar

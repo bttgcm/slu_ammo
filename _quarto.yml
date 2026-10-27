@@ -3,13 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "Ammonia Projekt"
+  title: "Start"
   navbar:
     left:
       - href: ammonia.qmd
-        text: Ammonia kalkylator
+        text: Ureahygienisering
       - href: nutrient.qmd  
         text: Gödselvärde
+      - href: analysdata.qmd  
+        text: Provsvars-analys
     logo: images/slu_logo.jpg
 
 

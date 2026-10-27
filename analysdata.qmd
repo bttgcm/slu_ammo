@@ -1,0 +1,772 @@
+---
+format:
+  html:
+    css: styles.css
+    toc: false
+include-in-header:
+  text: |
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+---
+
+```{ojs}
+//| echo: false
+// Inline CSS for the page header (title + logo row), same pattern as nutrient.qmd
+html`
+<style>
+.header-flex {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0em;
+}
+.header-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+</style>
+`
+```
+
+:::: header-flex
+::: header-flex
+<span class="header-title">
+
+<h1>Analysdata</h1>
+
+</span>
+:::
+::::
+
+```{ojs}
+//| echo: false
+// Free-text fields (Plats/Operatör/Batch ID/Provsvars ID) shown at the top
+// of the page, built the same way as the "analysdata" table below: a
+// compound element that dispatches its own "input" event so it works as
+// a `viewof`, with `.value` exposing all fields as one object.
+viewof meta = {
+  const platsInput = Object.assign(html`<input type="text" class="meta-input" placeholder="Ange plats">`, {});
+  const operatorInput = Object.assign(html`<input type="text" class="meta-input" placeholder="Ange operatör">`, {});
+  const batchInput = Object.assign(html`<input type="text" class="meta-input" placeholder="Ange batch ID" maxlength="15">`, {});
+  const provsvarsInput = Object.assign(html`<input type="text" class="meta-input" placeholder="Ange provsvars ID">`, {});
+
+  const container = html`<div class="meta-row">
+    <label class="meta-field">Anläggning
+      ${platsInput}
+    </label>
+    <label class="meta-field">Provsvrshanterare
+      ${operatorInput}
+    </label>
+    <label class="meta-field">Batch ID
+      ${batchInput}
+    </label>
+    <label class="meta-field">Provsvars ID
+      ${provsvarsInput}
+    </label>
+  </div>`;
+
+  function currentValue() {
+    return {
+      plats: platsInput.value,
+      operator: operatorInput.value,
+      batchId: batchInput.value,
+      provsvarsId: provsvarsInput.value
+    };
+  }
+
+  container.value = currentValue();
+
+  for (const input of [platsInput, operatorInput, batchInput, provsvarsInput]) {
+    input.addEventListener("input", () => {
+      container.value = currentValue();
+      container.dispatchEvent(new Event("input", {bubbles: true}));
+    });
+  }
+
+  return container;
+}
+```
+
+```{ojs}
+//| echo: false
+// Collapsible instruction panel shown at the top of the page.
+// <summary> is styled as a solid button (see .instruktion-toggle in
+// styles.css) instead of a plain text link, while <details> still
+// handles the expand/collapse natively — no extra JS needed.
+html`
+<details>
+ <summary class="instruktion-toggle">Instruktion</summary>
+ <div class="instruktion-body">
+
+Fyll i uppmätta analysvärden i tabellen nedan. Varje rad visar det tillåtna intervallet (min–max) för parametern. Om ett angivet värde ligger utanför intervallet visas en kommentar, hämtad från en textfil i mappen "comments", i kolumnen längst till höger.
+
+</div>
+</details>
+<hr style="border-top:5px  #03865a;">
+`
+```
+
+```{ojs}
+//| echo: false
+
+// ---------------------------------------------------------------------
+// Unit-conversion helpers shared by the param definitions below.
+//
+// Every row stores its authoritative value as `canonicalValue`, always
+// expressed in that row's canonical unit (`p.units[0]`). Displayed
+// numbers are always derived FROM the canonical value, never the other
+// way around — this matters because some conversions depend on the
+// live Torrsubstans (TS%) reading elsewhere in the table, which can
+// change after the row's own value was entered.
+//
+// Each unit entry provides:
+//   toCanonical(displayedValue, tsFraction)   -> canonical number
+//   fromCanonical(canonicalValue, tsFraction) -> displayed number
+// `tsFraction` (Torrsubstans % / 100) is only used by units that convert
+// between a per-volume basis (g/L, mg/L, µg/L — concentration in the
+// liquid) and a per-dry-solids basis (g/kg TS, mg/kg TS, cfu/kg TS),
+// since that conversion depends on how much dry matter the sample
+// contains. It assumes 1 L of sample ≈ 1 kg (water density), which is
+// the same assumption implicit in expressing Torrsubstans itself as a
+// plain percentage.
+// ---------------------------------------------------------------------
+
+// Units for a row whose canonical unit is g/L (a concentration in the
+// liquid phase): matches the "mg/L; g/L; g/kg TS; %" dropdown list used
+// by most nutrient rows in reference_file/table.csv.
+function volymEnheter() {
+  return [
+    {unit: "g/L", toCanonical: d => d, fromCanonical: c => c},
+    {unit: "mg/L", toCanonical: d => d / 1000, fromCanonical: c => c * 1000},
+    {unit: "g/kg TS", toCanonical: (d, ts) => d * ts, fromCanonical: (c, ts) => c / ts},
+    {unit: "%", toCanonical: d => d * 10, fromCanonical: c => c / 10}
+  ];
+}
+
+// Units for a row whose canonical unit is mg/kg TS (a concentration
+// relative to dry solids mass): matches the "μg/l; mg/L, mg/kg TS"
+// dropdown list used by the Metaller rows.
+function metallEnheter() {
+  return [
+    {unit: "mg/kg TS", toCanonical: d => d, fromCanonical: c => c},
+    {unit: "mg/L", toCanonical: (d, ts) => d / ts, fromCanonical: (c, ts) => c * ts},
+    {unit: "μg/L", toCanonical: (d, ts) => d / 1000 / ts, fromCanonical: (c, ts) => c * ts * 1000}
+  ];
+}
+
+// Units for a row whose canonical unit is log10 cfu/ml (E. coli,
+// Enterokocker): the dropdown offers linear colony counts in several
+// bases, which relate to the canonical log value through log10/10^x —
+// not a plain multiplicative factor — plus one (cfu/kg TS) that also
+// needs the live TS fraction. A fixed `stepOverride` is used for these
+// instead of scaling `p.step`, since a step size in log-space doesn't
+// translate to a sensible linear step by simple multiplication.
+function smittEnheter() {
+  const toLog = v => (v > 0 ? Math.log10(v) : -Infinity);
+  return [
+    {unit: "log10 cfu/ml", toCanonical: d => d, fromCanonical: c => c},
+    {unit: "cfu/ml", toCanonical: d => toLog(d), fromCanonical: c => Math.pow(10, c), stepOverride: 100},
+    {unit: "cfu/g", toCanonical: d => toLog(d), fromCanonical: c => Math.pow(10, c), stepOverride: 100},
+    {unit: "cfu/100 ml", toCanonical: d => toLog(d / 100), fromCanonical: c => Math.pow(10, c) * 100, stepOverride: 1000},
+    {unit: "cfu/kg TS", toCanonical: (d, ts) => toLog(d * ts), fromCanonical: (c, ts) => Math.pow(10, c) / ts, stepOverride: 1000}
+  ];
+}
+
+// ---------------------------------------------------------------------
+// Table definition.
+// Add a new analysis parameter by adding another object to this array.
+// `commentFile` must be a literal FileAttachment("comments/<name>.txt")
+// call (not a dynamically built path) so that Quarto can detect the file
+// at render time and copy it into the published site.
+//
+// `value`/`min`/`max`/`step` are always expressed in the row's canonical
+// unit (`units[0]`). `qualitativeUnits`, only set on Salmonella, lists
+// unit labels that switch the row from a number input to a detected /
+// not-detected selector instead (its source data is a lab pass/fail
+// result, not a measurement with a numeric range).
+// ---------------------------------------------------------------------
+params = [
+  {
+    key: "substans",                              // internal id, used to read back the value elsewhere
+    item: "Torrsubstans",                          // label shown in the "Item" column
+    value: 0.22,                                   // default value, expressed in the canonical unit (first entry of `units`)
+    min: 0.14,                                     // lower bound of the accepted range (canonical unit)
+    max: 0.4,                                      // upper bound of the accepted range (canonical unit)
+    step: 0.01,                                    // increment used by the input's up/down arrows (canonical unit)
+    units: [
+      {unit: "%", toCanonical: d => d, fromCanonical: c => c},
+      {unit: "mg/L", toCanonical: d => d / 10000, fromCanonical: c => c * 10000},
+      {unit: "g/L", toCanonical: d => d / 10, fromCanonical: c => c * 10},
+      {unit: "g/kg TS", toCanonical: (d, ts) => (d * ts) / 10, fromCanonical: (c, ts) => (c * 10) / ts}
+    ],
+    commentFile: FileAttachment("comments/substans.txt")   // text shown when value is out of range
+  },
+  {
+    key: "phfore",
+    item: "pH before",
+    value: 7.5,
+    min: 6,                                        // placeholder range, not in the source table
+    max: 9,
+    step: 0.1,
+    units: [{unit: "pH", toCanonical: d => d, fromCanonical: c => c}],
+    commentFile: FileAttachment("comments/phfore.txt")
+  },
+  {
+    key: "phefter",
+    item: "pH after",
+    value: 7.5,
+    min: 6,                                        // placeholder range, not in the source table
+    max: 9,
+    step: 0.1,
+    units: [{unit: "pH", toCanonical: d => d, fromCanonical: c => c}],
+    commentFile: FileAttachment("comments/phefter.txt")
+  },
+  {
+    key: "totalkvavefore",
+    item: "Totalkväve (N) before",
+    value: 0.49,
+    min: 0.28,
+    max: 0.70,
+    step: 0.01,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/totalkvave.txt")
+  },
+  {
+    key: "totalkvaveefter",
+    item: "Totalkväve (N) after",
+    value: 0.49,                                   // same range as "before" until real limits are known
+    min: 0.28,
+    max: 0.70,
+    step: 0.01,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/totalkvaveefter.txt")
+  },
+  {
+    key: "nhkvavefore",
+    item: "NH3/4-kväve (NH-N) before",
+    value: 0.40,
+    min: 0.25,
+    max: 0.54,
+    step: 0.01,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/nhkvave.txt")
+  },
+  {
+    key: "nhkvaveefter",
+    item: "NH3/4-kväve (NH-N) after",
+    value: 0.40,                                   // same range as "before" until real limits are known
+    min: 0.25,
+    max: 0.54,
+    step: 0.01,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/nhkvaveefter.txt")
+  },
+  {
+    key: "fosfor",
+    item: "Fosfor (P)",
+    value: 0.054,
+    min: 0.018,
+    max: 0.090,
+    step: 0.001,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/fosfor.txt")
+  },
+  {
+    key: "kalium",
+    item: "Kalium (K)",
+    value: 0.13,
+    min: 0.088,
+    max: 0.17,
+    step: 0.001,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/kalium.txt")
+  },
+  {
+    key: "svavel",
+    item: "Svavel (S)",
+    value: 2,
+    min: 1,                                        // not shown in the source table; confirmed with the user
+    max: 3,
+    step: 0.1,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/svavel.txt")
+  },
+  {
+    key: "kalcium",
+    item: "Kalcium (Ca)",
+    value: 0.125,
+    min: 0.01,
+    max: 0.24,
+    step: 0.001,
+    units: volymEnheter(),
+    commentFile: FileAttachment("comments/kalcium.txt")
+  },
+  {
+    key: "magnesium",
+    item: "Magnesium (Mg)",
+    value: 0.066,
+    min: 0.002,
+    max: 0.13,
+    step: 0.001,
+    // source table only lists "mg/L; g/kg TS" for this row (no g/L, no %)
+    units: [
+      {unit: "g/L", toCanonical: d => d, fromCanonical: c => c},
+      {unit: "mg/L", toCanonical: d => d / 1000, fromCanonical: c => c * 1000},
+      {unit: "g/kg TS", toCanonical: (d, ts) => d * ts, fromCanonical: (c, ts) => c / ts}
+    ],
+    commentFile: FileAttachment("comments/magnesium.txt")
+  },
+  {
+    key: "salmonella",
+    item: "Salmonella",
+    value: 0,                                      // target is no detectable Salmonella
+    min: 0,
+    max: 0,
+    step: 1,
+    units: [
+      {unit: "cfu/25 g", toCanonical: d => d, fromCanonical: c => c},
+      {unit: "Ej påvisad per 25 g"},                // qualitative — see qualitativeUnits below
+      {unit: "Ej påvisad per 50 g"}
+    ],
+    qualitativeUnits: ["Ej påvisad per 25 g", "Ej påvisad per 50 g"],
+    commentFile: FileAttachment("comments/salmonella.txt")
+  },
+  {
+    key: "ecoli",
+    item: "E. coli",
+    value: 3.5,
+    min: 2,
+    max: 5,
+    step: 0.1,
+    units: smittEnheter(),
+    commentFile: FileAttachment("comments/ecoli.txt")
+  },
+  {
+    key: "enterokocker",
+    item: "Enterokocker",
+    value: 2.4,
+    min: 0.3,
+    max: 4.5,
+    step: 0.1,
+    units: smittEnheter(),
+    commentFile: FileAttachment("comments/enterokocker.txt")
+  },
+  {
+    key: "bly",
+    item: "Bly (Pb)",
+    value: 5,
+    min: 0.711354309,
+    max: 10,
+    step: 0.1,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/bly.txt")
+  },
+  {
+    key: "kadmium",
+    item: "Kadmium (Cd)",
+    value: 0.25,
+    min: 0.212038304,
+    max: 0.3,
+    step: 0.001,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/kadmium.txt")
+  },
+  {
+    key: "koppar",
+    item: "Koppar (Cu)",
+    value: 85,
+    min: 15.18467852,
+    max: 155,
+    step: 1,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/koppar.txt")
+  },
+  {
+    key: "krom",
+    item: "Krom (Cr)",
+    value: 6.5,
+    min: 1.915184679,
+    max: 11,
+    step: 0.1,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/krom.txt")
+  },
+  {
+    key: "kvicksilver",
+    item: "Kvicksilver (Hg)",
+    value: 0.12,
+    min: 0.11,                                     // min/max swapped vs. the source table (confirmed with the user)
+    max: 0.134336525,
+    step: 0.001,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/kvicksilver.txt")
+  },
+  {
+    key: "nickel",
+    item: "Nickel (Ni)",
+    value: 7,
+    min: 2.749658003,
+    max: 12,
+    step: 0.1,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/nickel.txt")
+  },
+  {
+    key: "zink",
+    item: "Zink (Zn)",
+    value: 225,
+    min: 150.4787962,
+    max: 300,
+    step: 1,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/zink.txt")
+  },
+  {
+    key: "tenn",
+    item: "Tenn (Sn)",
+    value: 1.3,
+    min: 0,                                        // no minimum given in the source table
+    max: 2.6,
+    step: 0.1,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/tenn.txt")
+  },
+  {
+    key: "silver",
+    item: "Silver (Ag)",
+    value: 0.1,
+    min: 0,                                        // no minimum given in the source table
+    max: 0.2,
+    step: 0.01,
+    units: metallEnheter(),
+    commentFile: FileAttachment("comments/silver.txt")
+  }
+]
+```
+
+```{ojs}
+//| echo: false
+
+// Read the text of every comment file up front (in parallel) and store
+// it in a Map keyed by param.key, so the table cell below can just look
+// it up synchronously instead of dealing with promises per keystroke.
+comments = new Map(
+  await Promise.all(
+    params.map(async p => [p.key, await p.commentFile.text()])
+  )
+)
+```
+
+```{ojs}
+//| echo: false
+
+// ---------------------------------------------------------------------
+// Builds the reactive input table.
+// Each row gets its own <input type="number"> element. Editing any input
+// dispatches an "input" event on the returned <table>, which is how a
+// custom (non-Inputs.*) element becomes a valid OJS `viewof` — Quarto/
+// Observable listens for that event and re-reads `table.value`.
+// ---------------------------------------------------------------------
+viewof analysdata = {
+
+  // Rounds away floating-point noise (e.g. 0.29 * 1000 = 290.00000000000006).
+  function round(x) {
+    return Math.round(x * 1e6) / 1e6;
+  }
+
+  // The Torrsubstans (TS%) row is looked up live, not cached, because its
+  // own value can change after other rows have already been converted —
+  // see the "substans" special-case in the event wiring below.
+  function getTSFraction() {
+    const tsRow = rows.find(r => r.p.key === "substans");
+    return tsRow.canonicalValue / 100;
+  }
+
+  function unitOf(row, unitLabel) {
+    return row.p.units.find(u => u.unit === unitLabel);
+  }
+
+  function isQualitative(row, unitLabel = row.currentUnit) {
+    return Boolean(row.p.qualitativeUnits && row.p.qualitativeUnits.includes(unitLabel));
+  }
+
+  // One row per parameter: a number input for the value, a unit <select>
+  // built from that row's own `p.units`, two <span>s for the Min/Max
+  // cells that get rewritten whenever the unit (or, for TS-relative
+  // units, the Torrsubstans reading) changes, and — only for rows with
+  // `qualitativeUnits` (currently just Salmonella) — a detected/not
+  // detected <select> that replaces the number input for those units.
+  // `step` must be a real number (not "any") for the browser's built-in
+  // up/down spinner arrows to work — with step="any" the arrows render
+  // but stepUp()/stepDown() are no-ops, so clicking them does nothing.
+  const rows = params.map(p => ({
+    p,
+    currentUnit: p.units[0].unit,
+    canonicalValue: p.value,                        // single source of truth; always in p.units[0]'s unit
+    input: Object.assign(html`<input type="number" class="analys-input">`, {
+      value: p.value
+    }),
+    unitSelect: Object.assign(html`<select class="analys-unit">
+        ${p.units.map(u => html`<option value="${u.unit}">${u.unit}</option>`)}
+      </select>`, {
+      value: p.units[0].unit
+    }),
+    resultSelect: p.qualitativeUnits
+      ? Object.assign(html`<select class="analys-unit analys-result-select">
+          <option value="0">Ej påvisad</option>
+          <option value="1">Påvisad</option>
+        </select>`, {value: "0"})
+      : null,
+    minCell: html`<span></span>`,
+    maxCell: html`<span></span>`
+  }));
+
+  // Applies the row's currently selected unit to the input's min/max/step
+  // attributes and to the displayed Min/Max cells (all derived from the
+  // canonical numbers in `p`), and toggles which of input/resultSelect is
+  // visible. `stepOverride` is used as-is for units whose conversion isn't
+  // a simple multiplicative factor (see smittEnheter() above); otherwise
+  // the canonical step is converted through the same function as the
+  // value, which is valid because every other conversion here is linear.
+  function refreshRange(row) {
+    const qualitative = isQualitative(row);
+    if (row.resultSelect) {
+      row.input.style.display = qualitative ? "none" : "";
+      row.resultSelect.style.display = qualitative ? "" : "none";
+    }
+    if (qualitative) {
+      row.minCell.textContent = "–";
+      row.maxCell.textContent = "–";
+      return;
+    }
+    const ts = getTSFraction();
+    const u = unitOf(row, row.currentUnit);
+    const dispMin = round(u.fromCanonical(row.p.min, ts));
+    const dispMax = round(u.fromCanonical(row.p.max, ts));
+    // min/max are deliberately NOT set on the <input>: values outside the
+    // range must be enterable (and reachable with the spinner arrows) so
+    // the out-of-range comment can be shown.
+    row.input.step = u.stepOverride ?? (Math.abs(round(u.fromCanonical(row.p.step, ts))) || dispMax - dispMin || 1);
+    row.minCell.textContent = dispMin;
+    row.maxCell.textContent = dispMax;
+  }
+
+  // Redisplays every row's current canonical value in its currently
+  // selected unit. Needed whenever Torrsubstans changes, since that
+  // changes what a TS-relative unit (g/kg TS, mg/kg TS→mg/L, cfu/kg TS…)
+  // displays for every *other* row, even though none of their underlying
+  // canonical values actually changed.
+  function refreshAllDisplays() {
+    const ts = getTSFraction();
+    for (const row of rows) {
+      if (!isQualitative(row)) {
+        const u = unitOf(row, row.currentUnit);
+        row.input.valueAsNumber = round(u.fromCanonical(row.canonicalValue, ts));
+      }
+      refreshRange(row);
+    }
+  }
+
+  for (const row of rows) refreshRange(row);
+
+  // The table markup. <colgroup> pins each column to a fixed width so
+  // that the layout does not shift when the comment text appears or
+  // disappears — only the row height grows if the comment text wraps.
+  const table = html`<table class="analys-table">
+    <colgroup>
+      <col class="col-item">
+      <col class="col-unit">
+      <col class="col-value">
+      <col class="col-minmax">
+      <col class="col-minmax">
+      <col class="col-note">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Enhet</th>
+        <th>Värde</th>
+        <th>Min</th>
+        <th>Max</th>
+        <th>Kommentar</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rows.map(({p, input, unitSelect, resultSelect, minCell, maxCell}) => html`<tr>
+        <td>${p.item}</td>
+        <td>${unitSelect}</td>
+        <td>${input}${resultSelect || ""}</td>
+        <td>${minCell}</td>
+        <td>${maxCell}</td>
+        <td class="analys-note" data-key="${p.key}"></td>
+      </tr>`)}
+    </tbody>
+  </table>`;
+
+  // Reads the current displayed value and selected unit out of every row,
+  // e.g. {substans: {value: 0.22, unit: "%"}} — this becomes `analysdata`
+  // wherever it is referenced. For a qualitative row this is 0/1
+  // (not detected/detected) rather than the (hidden) number input.
+  function currentValue() {
+    return Object.fromEntries(
+      rows.map(row => {
+        const value = isQualitative(row) ? row.canonicalValue : row.input.valueAsNumber;
+        return [row.p.key, {value, unit: row.currentUnit}];
+      })
+    );
+  }
+
+  // Fills in (or clears) the comment cell for every row, depending on
+  // whether `canonicalValue` — always kept in the row's canonical unit,
+  // regardless of what's currently displayed — falls inside [min, max].
+  function updateNotes() {
+    for (const row of rows) {
+      const {p} = row;
+      const cell = table.querySelector(`.analys-note[data-key="${p.key}"]`);
+      const v = row.canonicalValue;
+      if (Number.isNaN(v)) {
+        cell.textContent = "Ange ett värde";
+        cell.classList.add("analys-warning");
+      } else if (v < p.min || v > p.max) {
+        cell.textContent = comments.get(p.key);
+        cell.classList.add("analys-warning");
+      } else {
+        cell.textContent = "";
+        cell.classList.remove("analys-warning");
+      }
+    }
+  }
+
+  // Initial render, then wire up each input/select so editing either one
+  // updates the comment column and the value exposed to the notebook.
+  table.value = currentValue();
+  updateNotes();
+
+  for (const row of rows) {
+    row.input.addEventListener("input", () => {
+      const u = unitOf(row, row.currentUnit);
+      row.canonicalValue = u.toCanonical(row.input.valueAsNumber, getTSFraction());
+
+      table.value = currentValue();
+      updateNotes();
+      table.dispatchEvent(new Event("input", {bubbles: true}));
+
+      // Torrsubstans feeds every other row's TS-relative unit conversions.
+      if (row.p.key === "substans") refreshAllDisplays();
+    });
+
+    if (row.resultSelect) {
+      row.resultSelect.addEventListener("change", () => {
+        row.canonicalValue = Number(row.resultSelect.value);
+
+        table.value = currentValue();
+        updateNotes();
+        table.dispatchEvent(new Event("input", {bubbles: true}));
+      });
+    }
+
+    // Switching the unit redisplays the row's existing canonical value in
+    // the new unit, instead of resetting it or silently misinterpreting
+    // it. Moving into or out of a qualitative unit (Salmonella only)
+    // resets the value, since a colony count and a detected/not-detected
+    // result aren't meaningfully convertible into one another.
+    row.unitSelect.addEventListener("change", () => {
+      const newUnit = row.unitSelect.value;
+      const enteringQualitative = isQualitative(row, newUnit);
+      const leavingQualitative = isQualitative(row, row.currentUnit) && !enteringQualitative;
+      row.currentUnit = newUnit;
+
+      if (enteringQualitative) {
+        row.resultSelect.value = "0";
+        row.canonicalValue = 0;
+      } else if (leavingQualitative) {
+        row.canonicalValue = 0;
+        row.input.valueAsNumber = 0;
+      } else {
+        const u = unitOf(row, newUnit);
+        row.input.valueAsNumber = round(u.fromCanonical(row.canonicalValue, getTSFraction()));
+      }
+      refreshRange(row);
+
+      table.value = currentValue();
+      updateNotes();
+      table.dispatchEvent(new Event("input", {bubbles: true}));
+
+      if (row.p.key === "substans") refreshAllDisplays();
+    });
+  }
+
+  return table;
+}
+```
+
+```{ojs}
+//| echo: false
+
+// Hidden marker only shown while printing/exporting (see .print-timestamp
+// in styles.css) — filled in by pdfButton below.
+html`<p class="print-timestamp"></p>`
+```
+
+```{ojs}
+//| echo: false
+
+// ---------------------------------------------------------------------
+// "Ladda ner PDF" button — same pattern as in nutrient.qmd/ammonia.qmd:
+// it screenshots the whole page with html2canvas and drops that image
+// into a jsPDF document sized to fit the page.
+// ---------------------------------------------------------------------
+pdfButton = {
+  const btn = html`<button id="pdf-download-btn" style="background-color: #03865a; color: white; border: none; padding: 8px 20px; border-radius: 4px;">Ladda ner PDF</button>`;
+  const originalLabel = btn.innerText;
+
+  btn.onclick = async () => {
+    btn.disabled = true;
+    btn.innerText = "Skapar PDF...";
+
+    // Stamp the current date/time into the page before capturing it.
+    const stamp = document.querySelector(".print-timestamp");
+    stamp.style.display = "block";
+    stamp.innerText = "Utskrivet: " + new Date().toLocaleString("sv-SE");
+
+    // Force the Instruktion panel open so its text is included in the
+    // PDF, then restore whatever state it was in before.
+    const instruktion = document.querySelector("details");
+    const instruktionWasOpen = instruktion ? instruktion.open : null;
+    if (instruktion) instruktion.open = true;
+
+    window.scrollTo(0, 0);
+
+    const target = document.body;
+    const canvas = await html2canvas(target, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+      ignoreElements: (el) => el.id === "pdf-download-btn" || el.id === "quarto-header"
+    });
+
+    stamp.style.display = "none";
+    if (instruktion) instruktion.open = instruktionWasOpen;
+
+    const { jsPDF } = window.jspdf;
+    const orientation = canvas.width > canvas.height ? "landscape" : "portrait";
+    const pdf = new jsPDF({ orientation, unit: "mm", format: "a4" });
+    const margin = 5;
+    const pageWidth = pdf.internal.pageSize.getWidth() - margin * 2;
+    const pageHeight = pdf.internal.pageSize.getHeight() - margin * 2;
+
+    let imgWidth = pageWidth;
+    let imgHeight = (canvas.height * imgWidth) / canvas.width;
+    if (imgHeight > pageHeight) {
+      imgHeight = pageHeight;
+      imgWidth = (canvas.width * imgHeight) / canvas.height;
+    }
+
+    pdf.addImage(canvas.toDataURL("image/png"), "PNG", margin, margin, imgWidth, imgHeight);
+    pdf.save("analysdata-resultat.pdf");
+
+    btn.disabled = false;
+    btn.innerText = originalLabel;
+  };
+
+  return btn;
+}
+```

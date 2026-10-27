@@ -6,7 +6,7 @@ format:
 include-in-header:
   text: |
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 ---
 
 ```{ojs}
@@ -40,16 +40,16 @@ html`
 //| echo: false
 html`
 <details>
- <summary><span style="font-size:24px;font-weight:bold;color:#03865a;">Instruktion</span></summary>
+ <summary class="instruktion-toggle">Instruktion</summary>
+ <div class="instruktion-body">
 
 Med det här verktyget uppskattas utifrån angiven ureadosering och torrsubstanshalt i klosettvattnet vilken koncentration av näringsämnen det behandlade klosettvattnet kommer att hålla. När klosettvatten behandlas med urea kommer kvävet vara det näringsämne som styr givan vilket begränsar av ammoniak-kvävet i klosettvattnet. Utifrån kvävebehovet uppskattas hur stor areal som krävs för gödsling med det behandlade klosettvattnet och hur mycket av andra näringsämnen som tillförs via klosettvattnet. För flera metaller finns gränsvärden för innehåll (SFS 1998:944) och hur mycket som maximalt får tillföras odlingsmarken per hektar och år (SNFS 1994:2). Bidraget till näring och metaller from klosettvattnet är baserat på svenska designvärden för toalettavfall (Jönsson mfl. 2005) och används som en faktor relaterat till uppmätt eller antagen torrsubstanshalt. Dessa uppskattningar är tänkta att underlätta planering av ett system för kretslopp från klosettvatten. Om du saknar data behåll givna startvärden som är satta att vara rimliga för klosettvatten insamlat i Sverige med snålspolande toaletter. Inför gödsling skall halter av kväve, fosfor och metallerna nedan analyseras i det aktuella klosettvattnet enligt SNFS 1998:944.
 
+</div>
 </details>
 <hr style="border-top:5px  #03865a;">
 `
 ```
-
-
 
 ::: {layout="[0.48, -0.04, 0.48]"}
 ```{ojs}
@@ -59,8 +59,8 @@ Med det här verktyget uppskattas utifrån angiven ureadosering och torrsubstans
 html`<div>
   <h4>Klosettvatten startvärden</h4>
 </div>`
-viewof torbu = Inputs.range([0, 6], {value: 0.2,step: 0.1,label: "Torrsubstans (%)"})
-viewof kvare = Inputs.range([0, 10], {value: 0.35,step: 0.05,label: "Kväve (g/L)"})
+html`<p>Torrsubstans (%): <strong>${torbu.toFixed(2)}</strong></p>`
+html`<p>Kväve (g/L): <strong>${kvare.toFixed(2)}</strong></p>`
 viewof NH3 = Inputs.range([0, 10], {value: 0.30,step: 0.05,label: "NH3/NH4+-kväve (g/L)"})
 
 
@@ -84,6 +84,8 @@ html`<style>
   th { color: #222 !important; }
 </style>`
 
+  torbu = (NH3 * 6.89622641509434) / 10
+  kvare = NH3 * 1.17924528301887
   totalkvave_f = 0.17
   ammonia_f = 0.14
   fosfor_f = 0.019
@@ -113,6 +115,7 @@ html`<style>
 
 
 html`
+  <p class="print-timestamp"></p>
   <div class="gray-box">
     <h4>Gödselspridning:</h4>
   Giva:  <mark>${giva.toFixed(3)}</mark>
@@ -162,44 +165,23 @@ html`<div class="gray-box">
 koppar = 0.015*torbu*10
 koppar_max = 300
 
-zink = 0.15*torbu*10
+zink = 0.519*giva
 zink_max = 600
 
-bly = 0.0007*torbu*10
+bly = 0.0025*giva
 bly_max = 25
 
-kadmium = 0.0002*torbu*10
+kadmium = 0.00073*giva
 kadmium_max = 0.75
 
-krom = 0.0019*torbu*10
+krom = 0.0066*giva
 krom_max = 40
 
-kvicksilver = 0.00013*torbu*10
+kvicksilver = 0.00046*giva
 kvicksilver_max = 1.5
 
-nickel = 0.0027*torbu*10
+nickel = 0.0095*giva
 nickel_max = 25
-
-
-
-// Using Puppeteer (server-side) or browser APIs
-async function printToPDF() {
-  if ('showSaveFilePicker' in window) {
-    // Modern browsers
-    const fileHandle = await window.showSaveFilePicker({
-      suggestedName: 'document.pdf',
-      types: [{
-        description: 'PDF files',
-        accept: { 'application/pdf': ['.pdf'] }
-      }]
-    });
-    // Implementation depends on your PDF library
-  } else {
-    // Fallback to window.print()
-    window.print();
-  }
-}
-
 
 
 
@@ -237,18 +219,60 @@ html`
  // <-- Make sure to output this as a cell!
 
 
-html`
-<button onclick="window.print()" style="background-color: #03865a; color: white; border: none; padding: 8px 20px; border-radius: 4px;">
-  Print to PDF
-</button>
-`
+pdfButton = {
+  const btn = html`<button id="pdf-download-btn" style="background-color: #03865a; color: white; border: none; padding: 8px 20px; border-radius: 4px;">Ladda ner PDF</button>`;
+  const originalLabel = btn.innerText;
+
+  btn.onclick = async () => {
+    btn.disabled = true;
+    btn.innerText = "Skapar PDF...";
+
+    const stamp = document.querySelector(".print-timestamp");
+    stamp.style.display = "block";
+    stamp.innerText = "Utskrivet: " + new Date().toLocaleString("sv-SE");
+
+    const instruktion = document.querySelector("details");
+    const instruktionWasOpen = instruktion ? instruktion.open : null;
+    if (instruktion) instruktion.open = true;
+
+    window.scrollTo(0, 0);
+
+    const target = document.body;
+    const canvas = await html2canvas(target, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+      ignoreElements: (el) => el.id === "pdf-download-btn" || el.id === "quarto-header"
+    });
+
+    stamp.style.display = "none";
+    if (instruktion) instruktion.open = instruktionWasOpen;
+
+    const { jsPDF } = window.jspdf;
+    const orientation = canvas.width > canvas.height ? "landscape" : "portrait";
+    const pdf = new jsPDF({ orientation, unit: "mm", format: "a4" });
+    const margin = 5;
+    const pageWidth = pdf.internal.pageSize.getWidth() - margin * 2;
+    const pageHeight = pdf.internal.pageSize.getHeight() - margin * 2;
+
+    let imgWidth = pageWidth;
+    let imgHeight = (canvas.height * imgWidth) / canvas.width;
+    if (imgHeight > pageHeight) {
+      imgHeight = pageHeight;
+      imgWidth = (canvas.width * imgHeight) / canvas.height;
+    }
+
+    pdf.addImage(canvas.toDataURL("image/png"), "PNG", margin, margin, imgWidth, imgHeight);
+    pdf.save("godselvarde-resultat.pdf");
+
+    btn.disabled = false;
+    btn.innerText = originalLabel;
+  };
+
+  return btn;
+}
 ```
-
-
 :::
 
----
+------------------------------------------------------------------------
 
 Detta verktyg utvecklades inom projekt JTI-21-83-613 finansierat av JTI-Stiftelsen under tema Cirkularitet/restströmmar.
-
-

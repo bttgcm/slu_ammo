@@ -1,0 +1,35 @@
+﻿substance,input_value,Unit,min,max,Dropdown units
+Torrsubstans,0.22,(%),0.14,0.4,mg/L;  g/L; g/kg TS; %
+,,,,,
+Totalkväve (tot-N),0.5,(g/L),0.28,0.7,mg/L;  g/L; g/kg TS; %
+,5,(g/L),,,
+,,,,,
+NH3/NH4+-kväve (NH-N),0.35,(g/L),0.25,0.54,mg/L;  g/L; g/kg TS; %
+,4.7,(g/L),,,
+,,,,,
+Fosfor (P),0.05,(g/L),0.018,0.09,mg/L;  g/L; g/kg TS; %
+Kalium (K),0.14,(g/L),0.088,0.17,mg/L;  g/L; g/kg TS; %
+Svavel (S),,(g/L),,,mg/L;  g/L; g/kg TS; %
+Kalcium (Ca),0.02,(g/L),0.01,0.24,mg/L;  g/L; g/kg TS; %
+Magnesium (Mg),0.002,(g/L),0.002,0.13,mg/L;  g/L; g/kg TS
+,,,,,
+Smittämnen,,,min,max,
+Salmonella,0,(log10 cfu/ml),låga halter,,cfu/ 25 g; ej påvisad per 25g; ej påvisad per 50 g
+,,(+/- per 25 g),,,
+,,,,,
+E. coli,5,(log10 cfu/ml),2,5,"cfy/g; cfu/ml, cfu/100 ml; cfu/ kg TS; 0/10 ml"
+,-2,(log10 cfu/ml),,,
+,,,,,
+Enterokocker,5.5,(log10 cfu/ml),0.3,4.5,"cfy/g; cfu/ml, cfu/100 ml; cfu/ kg TS; 0/10 ml"
+,-2,(log10 cfu/ml),,,
+,,,,,
+Metaller,,,min,max,
+Bly (Pb),0.0052,(mg/kg TS),0.711354309,10,"μg/l; mg/L, mg/ kg TS"
+Kadmium (Cd),0.002,(mg/kg TS),0.212038304,0.3,"μg/l; mg/L, mg/ kg TS"
+Koppar (Cu),0.24,(mg/kg TS),15.18467852,155,"μg/l; mg/L, mg/ kg TS"
+Krom (Cr),0.005,(mg/kg TS),1.915184679,11,"μg/l; mg/L, mg/ kg TS"
+Kvicksilver (Hg),0.001,(mg/kg TS),0.134336525,0.11,"μg/l; mg/L, mg/ kg TS"
+Nickel (Ni),0.015,(mg/kg TS),2.749658003,12,"μg/l; mg/L, mg/ kg TS"
+Zink (Zn),0.8,(mg/kg TS),150.4787962,300,"μg/l; mg/L, mg/ kg TS"
+Tenn Sn,,(mg/kg TS),,2.6,"μg/l; mg/L, mg/ kg TS"
+Silver Ag, ,(mg/kg TS),,0.2,"μg/l; mg/L, mg/ kg TS"

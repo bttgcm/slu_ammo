@@ -1,0 +1,1 @@
+Värdet ligger utanför det normala intervallet för pH efter behandling. Kontrollera analysresultatet eller ta ett nytt prov innan värdet används för beräkning.
