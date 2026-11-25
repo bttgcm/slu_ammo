@@ -243,6 +243,44 @@ input[type="range"]::-webkit-slider-thumb {
   color: #b30000;
   font-weight: 600;
 }
+/* On narrow (phone) screens the 6-column layout no longer fits without
+   horizontal scrolling. Drop the fixed table layout and turn each <tr>
+   into a flex row instead, so its cells wrap onto two lines — line 1:
+   Item/Enhet/Värde, line 2: Min/Max/Kommentar — with every cell still
+   fully visible. The <colgroup> widths only apply under table display,
+   so they're simply ignored here without needing to remove them. */
+@media (max-width: 600px) {
+  .analys-table {
+    display: block;
+    table-layout: auto;
+  }
+  .analys-table thead,
+  .analys-table tbody {
+    display: block;
+    width: 100%;
+  }
+  .analys-table tr {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .analys-table th,
+  .analys-table td {
+    display: block;
+    box-sizing: border-box;
+    padding: 4px 6px;
+    font-size: 0.85em;
+  }
+  .analys-table tbody tr {
+    margin-bottom: 6px;
+    border-bottom: 3px solid #03865a;
+  }
+  .analys-table th:nth-child(1), .analys-table td:nth-child(1) { flex: 0 0 40%; }
+  .analys-table th:nth-child(2), .analys-table td:nth-child(2) { flex: 0 0 25%; }
+  .analys-table th:nth-child(3), .analys-table td:nth-child(3) { flex: 0 0 35%; }
+  .analys-table th:nth-child(4), .analys-table td:nth-child(4) { flex: 0 0 20%; }
+  .analys-table th:nth-child(5), .analys-table td:nth-child(5) { flex: 0 0 20%; }
+  .analys-table th:nth-child(6), .analys-table td:nth-child(6) { flex: 0 0 60%; }
+}
 .meta-row {
   display: flex;
   gap: 1em;
