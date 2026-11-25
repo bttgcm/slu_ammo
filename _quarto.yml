@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
+    - "!ammonia - Copy.qmd"
+    - "!try.qmd"
+  resources:
+    - sw.js
+    - pwa/manifest.webmanifest
+    - pwa/icons/*
 
 website:
   title: "Start"
@@ -20,6 +28,7 @@ format:
     theme: cosmo
     css: styles.css
     toc: false
+    include-in-header: pwa/pwa-head.html
 
 editor: visual
 
